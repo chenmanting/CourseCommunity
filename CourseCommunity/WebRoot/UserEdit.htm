@@ -1,0 +1,161 @@
+﻿<HTML>
+<HEAD><TITLE>个人信息</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<SCRIPT language=javascript src="js/Default.js"></SCRIPT>
+
+<SCRIPT language=javascript src="js/StaffInfo.js"></SCRIPT>
+<LINK href="css/PersonalStyle.css" type=text/css rel=stylesheet>
+</HEAD>
+<BODY>
+<FORM id=form1 name=form1 action="" method=post encType=multipart/form-data>
+<TABLE class=case height="100%" cellSpacing=0 cellPadding=0 width="98%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD background=images/per_case_bg.gif bgColor=#ffffff height=27>
+      <TABLE cellSpacing=5 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD><B>现在位置 &gt; 个人信息</B></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD vAlign=top bgColor=#ffffff>
+      <TABLE cellSpacing=5 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD width=81 align="right">真实姓名:</TD>
+          <TD width="356"><INPUT class=input id=txtFullName tabIndex=1 maxLength=100 
+            name=txtFullName> </TD>
+          <TD width="159"><INPUT id=chkFullNameState tabIndex=21 type=checkbox 
+            name=chkFullNameState><LABEL for=chkFullNameState>显示</LABEL></TD>
+          <TD width="262"></TD></TR>
+        <TR>
+          <TD align="right" noWrap>性别:</TD>
+          <TD><INPUT id=rbtnmale tabIndex=2 type=radio CHECKED value=rbtnmale 
+            name=Sex><LABEL for=rbtnmale>男</LABEL> <INPUT id=rbtnfemale 
+            tabIndex=3 type=radio value=rbtnfemale name=Sex><LABEL 
+            for=rbtnfemale>女</LABEL></TD>
+          <TD><INPUT id=chkSexState tabIndex=22 type=checkbox CHECKED 
+            name=chkSexState><LABEL for=chkSexState>显示</LABEL></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD align="right" noWrap>学号(工号):</TD>
+          <TD><INPUT class=input id=txtMSN tabIndex=14 maxLength=100 
+            name=txtMSN> </TD>
+          <TD><INPUT id=chkMSNState tabIndex=28 type=checkbox CHECKED 
+            name=chkMSNState><LABEL for=chkMSNState>显示</LABEL></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD align="right" noWrap>出生日期:</TD>
+          <TD>
+            <TABLE style="WIDTH: 150px; HEIGHT: 20px" cellSpacing=0 
+            cellPadding=0 border=0>
+              <TBODY>
+              <TR>
+                <TD><INPUT class=DateControl_Style_TextBox id=dcBirthday 
+                  onkeydown=DateControl_TextBox_OnKeyDown() 
+                  onblur="DateControl_TextBox_OnBlur_Ext('dcBirthday')" 
+                  style="WIDTH: 100%" alt="键盘输入格式:MMDD,YYMMDD, YYYYMMDD" 
+                  name=dcBirthday></TD>
+                <TD width="10%"><INPUT class=DateControl_Style_Button style="WIDTH: 100%" onClick="jscript:DateControl_Button_OnClick('dcBirthday','../../../JavaScript/BenQGuru_WebUI_WebControl_DateControl_Calendar1.htm')" type=button value=...></TD></TR></TBODY></TABLE></TD>
+          <TD><INPUT id=chkBirthdayState tabIndex=23 type=checkbox 
+            name=chkBirthdayState><LABEL for=chkBirthdayState>显示</LABEL></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD align="right" noWrap>籍贯:</TD>
+          <TD><INPUT class=input id=txtFullName tabIndex=1 maxLength=100 
+            name=txtFullName></TD>
+          <TD></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD align="right" noWrap>用户类型:</TD>
+          <TD><INPUT id=userType tabIndex=6 type=radio CHECKED 
+            value=teacher name=WideBand>
+          教师
+            <INPUT id=userType tabIndex=7 type=radio value=student 
+            name=WideBand>
+            <LABEL for=rbtnNetcom>学生</LABEL> <INPUT 
+            id=userType tabIndex=8 type=radio value=manager 
+            name=WideBand>
+            <LABEL for=rbtnTraincom>管理</LABEL></TD>
+          <TD></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD align="right" noWrap>Email:</TD>
+          <TD><INPUT class=input id=txtEmail tabIndex=10 maxLength=100 name=txtEmail> </TD>
+          <TD><INPUT id=chkEmailState tabIndex=24 type=checkbox 
+            name=chkEmailState><LABEL for=chkEmailState>显示</LABEL></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD align="right" noWrap>QQ:</TD>
+          <TD><INPUT class=input id=txtOICQ tabIndex=13 maxLength=100 
+            name=txtOICQ> </TD>
+          <TD><INPUT id=chkOICQState tabIndex=27 type=checkbox CHECKED 
+            name=chkOICQState><LABEL for=chkOICQState>显示</LABEL></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD align="right" noWrap>固定电话:</TD>
+          <TD><INPUT class=input id=txtTelephone tabIndex=15 maxLength=100 
+            name=txtTelephone> </TD>
+          <TD><INPUT id=chkTelephoneState tabIndex=29 type=checkbox 
+            name=chkTelephoneState><LABEL for=chkTelephoneState>显示</LABEL></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD align="right" noWrap>移动电话:</TD>
+          <TD><INPUT class=input id=txtMobile tabIndex=16 maxLength=100 
+            name=txtMobile> </TD>
+          <TD><INPUT id=chkMobileState tabIndex=30 type=checkbox 
+            name=chkMobileState><LABEL for=chkMobileState>显示</LABEL></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD align="right" noWrap>工作单位:</TD>
+          <TD><INPUT class=input id=txtPost tabIndex=11 maxLength=6 
+            name=txtPost> </TD>
+          <TD><INPUT id=chkPostState tabIndex=25 type=checkbox 
+            name=chkPostState><LABEL for=chkPostState>显示</LABEL></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD align="right" noWrap>职业:</TD>
+          <TD><SELECT class=input id=ddlWork style="WIDTH: 136px" tabIndex=18 
+            name=ddlWork> <OPTION value="" selected>请选择</OPTION> <OPTION 
+              value=10000608>企事业单位</OPTION> <OPTION value=10000609>金融机构</OPTION> 
+              <OPTION value=10000610>文化艺术</OPTION> <OPTION 
+              value=10000612>广告／公关</OPTION> <OPTION value=10000613>新闻媒体</OPTION> 
+              <OPTION value=10000614>商业服务</OPTION> <OPTION 
+              value=10000615>生活服务</OPTION> <OPTION value=10000616>社会团体</OPTION> 
+              <OPTION value=10000617>娱乐／影视</OPTION> <OPTION 
+              value=10000618>公务员</OPTION> <OPTION value=10000619>农林渔</OPTION> 
+              <OPTION value=10000620>法律／咨询</OPTION> <OPTION 
+              value=10000621>旅游业</OPTION> <OPTION value=10000622>IT业</OPTION> 
+              <OPTION value=10000623>通讯业</OPTION> <OPTION 
+              value=10000624>运动／休闲</OPTION> <OPTION value=10000625>制造业</OPTION> 
+              <OPTION value=10000626>自由职业</OPTION></SELECT></TD>
+          <TD><INPUT id=chkWorkState tabIndex=32 type=checkbox 
+            name=chkWorkState><LABEL for=chkWorkState>显示</LABEL></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD align="right">个人头像:</TD>
+          <TD><IMG id=imgPhoto 
+            style="BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; WIDTH: 100px; HEIGHT: 120px; BORDER-RIGHT-WIDTH: 0px" 
+            src="images/none.gif"><BR><INPUT class=input id=fulPhoto 
+            tabIndex=19 type=file name=fulPhoto> </TD>
+          <TD><INPUT id=chkPhotoState tabIndex=33 type=checkbox CHECKED 
+            name=chkPhotoState><LABEL for=chkPhotoState>显示</LABEL></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD vAlign=top align="right" noWrap>个人介绍:</TD>
+          <TD><TEXTAREA class=input id=txtDescription style="WIDTH: 100%; WORD-BREAK: break-all; HEIGHT: 120px" tabIndex=20 name=txtDescription></TEXTAREA> 
+          </TD>
+          <TD><INPUT id=chkPhotoState tabIndex=33 type=checkbox CHECKED 
+            name=chkPhotoState><LABEL for=chkPhotoState>显示</LABEL></TD>
+          <TD noWrap></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD>
+          <TD colSpan=3><SPAN id=lblPrompt 
+        style="COLOR: red">&nbsp;</SPAN></TD></TR>
+        <TR>
+          <TD align=middle>&nbsp;</TD>
+          <TD colSpan=3><INPUT class=bt id=btnSave accessKey=S onClick="return CheckInput();" tabIndex=35 type=submit value=保存(S) name=btnSave> 
+            <INPUT class=bt id=btnBack accessKey=B tabIndex=36 type=submit value=返回(B) name=btnBack> 
+          </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+</FORM>
+</BODY>
+</HTML>

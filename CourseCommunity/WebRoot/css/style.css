@@ -1,0 +1,66 @@
+BODY {
+	OVERFLOW-Y: auto; SCROLLBAR-FACE-COLOR: #ebebeb; FONT-SIZE: 12px; OVERFLOW-X: hidden; MARGIN: 0px; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #ebebeb; COLOR: #656d77; SCROLLBAR-3DLIGHT-COLOR: #f4f4f4; SCROLLBAR-ARROW-COLOR: #445b6d; SCROLLBAR-TRACK-COLOR: #efefef; FONT-FAMILY: "Arial"; SCROLLBAR-DARKSHADOW-COLOR: #98aab1; BACKGROUND-COLOR: #f6f6f6
+}
+TD {
+	FONT-SIZE: 12px
+}
+TH {
+	FONT-SIZE: 12px
+}
+A:link {
+	FONT-SIZE: 12px; COLOR: #656d77; TEXT-DECORATION: none
+}
+A:visited {
+	FONT-SIZE: 12px; COLOR: #656d77; TEXT-DECORATION: none
+}
+A:hover {
+	FONT-SIZE: 12px; COLOR: #fe5200; TEXT-DECORATION: underline
+}
+TD.content {
+	TEXT-JUSTIFY: inter-ideograph; LINE-HEIGHT: 22px; TEXT-ALIGN: justify; TEXT-DECORATION: none
+}
+TD.content A:link {
+	TEXT-JUSTIFY: inter-ideograph; LINE-HEIGHT: 22px; TEXT-ALIGN: justify
+}
+TD.content A:hover {
+	TEXT-JUSTIFY: inter-ideograph; LINE-HEIGHT: 22px; TEXT-ALIGN: justify
+}
+TD.content A:visited {
+	LINE-HEIGHT: 22px
+}
+.case {
+	BORDER-RIGHT: #e0e0e0 1px solid; BORDER-TOP: #e0e0e0 1px solid; BORDER-LEFT: #e0e0e0 1px solid; BORDER-BOTTOM: #e0e0e0 1px solid
+}
+TD.casety {
+	FONT-WEIGHT: bold; FILTER: DropShadow(Color=#D15013, OffX=1, OffY=1, Positive=1); COLOR: #ffffff; TEXT-DECORATION: none
+}
+.bt {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #ffffff 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 12px; BORDER-LEFT: #ffffff 1px solid; COLOR: #ffffff; LINE-HEIGHT: 18px; BORDER-BOTTOM: #999999 1px solid; FONT-FAMILY: "verdana"; HEIGHT: 21px; BACKGROUND-COLOR: #ff4800; TEXT-DECORATION: none
+}
+.input {
+	BORDER-RIGHT: #f5f5f5 1px solid; BORDER-TOP: #5e5e5e 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #5e5e5e 1px solid; COLOR: #656d77; BORDER-BOTTOM: #f5f5f5 1px solid; FONT-FAMILY: "verdana"; BACKGROUND-COLOR: #ffffff; TEXT-DECORATION: none
+}
+.per_bg {
+	BACKGROUND-POSITION: 50% bottom; BACKGROUND-IMAGE: url(../images/per_bg.gif); BACKGROUND-REPEAT: repeat-x
+}
+.Tabon {
+	BACKGROUND-POSITION: left 50%; FONT-WEIGHT: bold; FILTER: DropShadow(Color=#ffffff, OffX=1, OffY=1, Positive=1); BACKGROUND-IMAGE: url(../images/per_ico2.gif); WIDTH: 75px; CURSOR: hand; COLOR: #00043e; BACKGROUND-REPEAT: no-repeat; TEXT-ALIGN: center
+}
+.Taboff {
+	BACKGROUND-POSITION: left 50%; FONT-WEIGHT: bold; FILTER: DropShadow(Color=#ffffff, OffX=1, OffY=1, Positive=1); BACKGROUND-IMAGE: url(../images/per_ico2_.gif); WIDTH: 75px; CURSOR: hand; COLOR: #00043e; BACKGROUND-REPEAT: no-repeat; TEXT-ALIGN: center
+}
+.bold {
+	FONT-WEIGHT: bold
+}
+.font5 {
+	COLOR: #d90000; TEXT-DECORATION: none
+}
+.font5 A:link {
+	COLOR: #d90000; TEXT-DECORATION: none
+}
+.font5 A:visited {
+	COLOR: #d90000; TEXT-DECORATION: none
+}
+.font5 A:hover {
+	COLOR: #d90000; TEXT-DECORATION: none
+}

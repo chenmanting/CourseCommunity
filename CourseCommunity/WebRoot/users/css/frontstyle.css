@@ -1,0 +1,177 @@
+BODY {
+	PADDING-RIGHT: 0px; OVERFLOW-Y: auto; PADDING-LEFT: 0px; FONT-SIZE: 12px; OVERFLOW-X: hidden; PADDING-BOTTOM: 0px; MARGIN: 0px; SCROLLBAR-HIGHLIGHT-COLOR: buttonface; COLOR: #656d77; SCROLLBAR-3DLIGHT-COLOR: buttonhighlight; PADDING-TOP: 0px; SCROLLBAR-TRACK-COLOR: #eeeeee; FONT-FAMILY: "Arial"; SCROLLBAR-DARKSHADOW-COLOR: buttonshadow; BACKGROUND-COLOR: #ffffff
+}
+TEXTAREA {
+	SCROLLBAR-FACE-COLOR: #ffebdb; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #ffebdb; SCROLLBAR-3DLIGHT-COLOR: #ffebdb; SCROLLBAR-ARROW-COLOR: #f64f00; SCROLLBAR-TRACK-COLOR: #fffaf6; SCROLLBAR-DARKSHADOW-COLOR: #ffebdb
+}
+A:link {
+	FONT-SIZE: 12px; COLOR: #656d77; TEXT-DECORATION: none
+}
+A:visited {
+	FONT-SIZE: 12px; COLOR: #656d77; TEXT-DECORATION: none
+}
+A:hover {
+	FONT-SIZE: 12px; COLOR: #fe5200; TEXT-DECORATION: underline
+}
+TD {
+	FONT-SIZE: 12px
+}
+.case_box1 {
+	BORDER-TOP: #fe5200 1px solid
+}
+.case_box2 {
+	BORDER-RIGHT: #fe5200 1px solid; BORDER-LEFT: #fe5200 1px solid; BORDER-BOTTOM: #fe5200 1px solid
+}
+.case {
+	BACKGROUND-POSITION: 50% top; BACKGROUND-IMAGE: url(../images/lcasebg.gif); BORDER-BOTTOM: #fbbca5 1px solid; BACKGROUND-REPEAT: repeat-x; BACKGROUND-COLOR: #fef4ef
+}
+.case2 {
+	BACKGROUND-POSITION: 50% bottom; BACKGROUND-IMAGE: url(../images/lcasebg2.gif); BACKGROUND-REPEAT: repeat-x; BACKGROUND-COLOR: #ffffff
+}
+.h22 {
+	WORD-BREAK: break-all; LINE-HEIGHT: 22px; TEXT-ALIGN: justify; WORD-WRAP: break-word
+}
+.h18 {
+	WORD-BREAK: break-all; LINE-HEIGHT: 18px; TEXT-ALIGN: justify; WORD-WRAP: break-word
+}
+.cnfont {
+	FONT-SIZE: 12px
+}
+.enfont {
+	FONT-SIZE: 11px; FONT-FAMILY: "Tahoma"
+}
+.enfont A:link {
+	FONT-SIZE: 11px; FONT-FAMILY: "Tahoma"
+}
+.enfont A:visited {
+	FONT-SIZE: 11px; FONT-FAMILY: "Tahoma"
+}
+TD.default1 {
+	BACKGROUND-POSITION: left 50%; BACKGROUND-IMAGE: url(../images/sidel.gif); BACKGROUND-REPEAT: repeat-y
+}
+TD.default2 {
+	BACKGROUND-POSITION: right 50%; BACKGROUND-IMAGE: url(../images/sider.gif); BACKGROUND-REPEAT: repeat-y
+}
+.copybg {
+	BACKGROUND-POSITION: 50% top; BACKGROUND-IMAGE: url(../images/copybg.gif); BACKGROUND-REPEAT: no-repeat
+}
+TD.casety {
+	FILTER: DropShadow(Color=#D04300, OffX=1, OffY=1, Positive=1); COLOR: #ffffff; TEXT-DECORATION: none
+}
+TD.menu {
+	COLOR: #656d77
+}
+TD.menu A:link {
+	COLOR: #656d77
+}
+TD.menu A:visited {
+	COLOR: #656d77
+}
+TD.menu A:hover {
+	COLOR: #fe5200; BORDER-BOTTOM: #ff3300 1px dotted; TEXT-DECORATION: none
+}
+.bt {
+	BORDER-RIGHT: #fe5200 1px solid; BACKGROUND-POSITION: 50% top; BORDER-TOP: #fe5200 1px solid; FONT-WEIGHT: bold; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(../images/btn-bg2.gif); BORDER-LEFT: #fe5200 1px solid; COLOR: #ffffff; LINE-HEIGHT: 21px; BORDER-BOTTOM: #fe5200 1px solid; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: "arial"; HEIGHT: 23px; TEXT-DECORATION: none
+}
+.linput {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 11px; BACKGROUND-IMAGE: url(../images/in3.gif); BORDER-LEFT: medium none; WIDTH: 100%; COLOR: #4c525a; LINE-HEIGHT: 19px; BORDER-BOTTOM: medium none; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: "verdana"; HEIGHT: 20px; TEXT-DECORATION: none
+}
+.sinput {
+	BORDER-RIGHT: #f3f3f3 1px solid; BORDER-TOP: #808080 1px solid; BORDER-LEFT: #808080 1px solid; WIDTH: 100%; COLOR: #656d77; LINE-HEIGHT: 17px; BORDER-BOTTOM: #f3f3f3 1px solid; FONT-FAMILY: "arial"; HEIGHT: 19px; BACKGROUND-COLOR: #f7f7f7
+}
+.input {
+	BORDER-RIGHT: #fdd2bd 1px solid; BACKGROUND-POSITION: 50% top; BORDER-TOP: #fdd2bd 1px solid; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(../images/btn-bg.gif); BORDER-LEFT: #fdd2bd 1px solid; WIDTH: 100%; COLOR: #666666; LINE-HEIGHT: 19px; BORDER-BOTTOM: #fdd2bd 1px solid; BACKGROUND-REPEAT: repeat-x; FONT-FAMILY: arial; HEIGHT: 23px; BACKGROUND-COLOR: #ffffff; TEXT-DECORATION: none
+}
+.Tabon {
+	FONT-WEIGHT: bold; BACKGROUND-IMAGE: url(../images/tab4.gif); WIDTH: 69px; CURSOR: pointer; COLOR: #ffffff; LINE-HEIGHT: 22px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 22px
+}
+.Taboff {
+	FONT-WEIGHT: bold; BACKGROUND-IMAGE: url(../images/tab4_.gif); WIDTH: 69px; CURSOR: pointer; COLOR: #292929; LINE-HEIGHT: 22px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 22px
+}
+.on {
+	BACKGROUND-POSITION: 9px 12px; FONT-WEIGHT: bold; BACKGROUND-IMAGE: url(../images/ico77.gif); CURSOR: pointer; COLOR: #ef4300; TEXT-INDENT: 14px; BACKGROUND-REPEAT: no-repeat
+}
+.on A:link {
+	COLOR: #ef4300
+}
+.on A:visited {
+	COLOR: #ef4300
+}
+.off {
+	BACKGROUND-POSITION: 5px 12px; BACKGROUND-IMAGE: url(../images/ico9.gif); CURSOR: pointer; TEXT-INDENT: 12px; BACKGROUND-REPEAT: no-repeat
+}
+.enfont {
+	FONT-SIZE: 10px; FONT-FAMILY: verdana; TEXT-DECORATION: none
+}
+.enfont A:link {
+	FONT-SIZE: 10px; FONT-FAMILY: verdana; TEXT-DECORATION: none
+}
+.font1 {
+	COLOR: #b13f00; TEXT-DECORATION: none
+}
+.font1 A:link {
+	COLOR: #b13f00; TEXT-DECORATION: none
+}
+.font1 A:visited {
+	COLOR: #b13f00; TEXT-DECORATION: none
+}
+.font1 A:hover {
+	COLOR: #382e28; TEXT-DECORATION: none
+}
+.font2 {
+	COLOR: #ef4300; TEXT-DECORATION: none
+}
+.font2 A:link {
+	COLOR: #ef4300; TEXT-DECORATION: none
+}
+.font2 A:visited {
+	COLOR: #ef4300; TEXT-DECORATION: none
+}
+.font2 A:hover {
+	COLOR: #fe5200; TEXT-DECORATION: none
+}
+.font3 {
+	COLOR: #96a800; TEXT-DECORATION: none
+}
+.font3 A:link {
+	COLOR: #96a800; TEXT-DECORATION: none
+}
+.font3 A:visited {
+	COLOR: #96a800; TEXT-DECORATION: none
+}
+.font3 A:hover {
+	COLOR: #fe5200; TEXT-DECORATION: none
+}
+.font4 {
+	COLOR: #000; TEXT-DECORATION: none
+}
+.font4 A:link {
+	COLOR: #000; TEXT-DECORATION: none
+}
+.font4 A:visited {
+	COLOR: #000; TEXT-DECORATION: none
+}
+.font4 A:hover {
+	COLOR: #fe4200; TEXT-DECORATION: none
+}
+.font5 {
+	COLOR: #d90000; TEXT-DECORATION: none
+}
+.font5 A:link {
+	COLOR: #d90000; TEXT-DECORATION: none
+}
+.font5 A:visited {
+	COLOR: #d90000; TEXT-DECORATION: none
+}
+.font5 A:hover {
+	COLOR: #d90000; TEXT-DECORATION: none
+}
+.bold {
+	FONT-WEIGHT: bold
+}
+.line {
+	BACKGROUND-POSITION: 50% bottom; BACKGROUND-IMAGE: url(../images/caseline.gif); BACKGROUND-REPEAT: repeat-x
+}
+.font14 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px
+}

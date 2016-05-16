@@ -1,0 +1,93 @@
+BODY {
+	OVERFLOW-Y: auto; SCROLLBAR-FACE-COLOR: #ebebeb; FONT-SIZE: 12px; OVERFLOW-X: hidden; MARGIN: 0px; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #ebebeb; COLOR: #333333; SCROLLBAR-3DLIGHT-COLOR: #f4f4f4; SCROLLBAR-ARROW-COLOR: #445b6d; SCROLLBAR-TRACK-COLOR: #efefef; FONT-FAMILY: "Arial"; SCROLLBAR-DARKSHADOW-COLOR: #98aab1; BACKGROUND-COLOR: #f6f6f6
+}
+TD {
+	FONT-SIZE: 12px
+}
+TH {
+	FONT-SIZE: 12px
+}
+A:link {
+	FONT-SIZE: 12px; COLOR: #656d77; TEXT-DECORATION: none
+}
+A:visited {
+	FONT-SIZE: 12px; COLOR: #656d77; TEXT-DECORATION: none
+}
+A:hover {
+	FONT-SIZE: 12px; COLOR: #fe5200; TEXT-DECORATION: underline
+}
+TD.content {
+	TEXT-JUSTIFY: inter-ideograph; LINE-HEIGHT: 22px; TEXT-ALIGN: justify; TEXT-DECORATION: none
+}
+TD.content A:link {
+	TEXT-JUSTIFY: inter-ideograph; LINE-HEIGHT: 22px; TEXT-ALIGN: justify
+}
+TD.content A:hover {
+	TEXT-JUSTIFY: inter-ideograph; LINE-HEIGHT: 22px; TEXT-ALIGN: justify
+}
+TD.content A:visited {
+	LINE-HEIGHT: 22px
+}
+.case {
+	BORDER-RIGHT: #e0e0e0 1px solid; BORDER-TOP: #e0e0e0 1px solid; BORDER-LEFT: #e0e0e0 1px solid; BORDER-BOTTOM: #e0e0e0 1px solid
+}
+TD.casety {
+	FONT-WEIGHT: bold; FILTER: DropShadow(Color=#D15013, OffX=1, OffY=1, Positive=1); COLOR: #ffffff; TEXT-DECORATION: none
+}
+.bt {
+	BORDER-RIGHT: 1px outset; BORDER-TOP: 1px outset; FONT-SIZE: 12px; BORDER-LEFT: 1px outset; COLOR: #262626; LINE-HEIGHT: 18px; BORDER-BOTTOM: 1px outset; FONT-FAMILY: "arial"; HEIGHT: 20px; BACKGROUND-COLOR: #e8e8e8; TEXT-DECORATION: none
+}
+INPUT {
+	BORDER-RIGHT: #e8e8e8 1px inset; BORDER-TOP: #e8e8e8 1px inset; FONT-SIZE: 12px; BORDER-LEFT: #e8e8e8 1px inset; COLOR: #333333; LINE-HEIGHT: 17px; BORDER-BOTTOM: #e8e8e8 1px inset; FONT-FAMILY: "verdana"; HEIGHT: 19px; BACKGROUND-COLOR: #f6f6f6; TEXT-DECORATION: none
+}
+SELECT {
+	BORDER-RIGHT: #e8e8e8 1px inset; BORDER-TOP: #e8e8e8 1px inset; FONT-SIZE: 12px; BORDER-LEFT: #e8e8e8 1px inset; COLOR: #333333; BORDER-BOTTOM: #e8e8e8 1px inset; FONT-FAMILY: "verdana"; HEIGHT: 21px; BACKGROUND-COLOR: #f6f6f6; TEXT-DECORATION: none
+}
+.per_bg {
+	BACKGROUND-POSITION: 50% bottom; BACKGROUND-IMAGE: url(../images/per_bg.gif); BACKGROUND-REPEAT: repeat-x
+}
+.Tabon {
+	BACKGROUND-POSITION: left 50%; FONT-WEIGHT: bold; FILTER: DropShadow(Color=#ffffff, OffX=1, OffY=1, Positive=1); BACKGROUND-IMAGE: url(../images/per_ico2.gif); WIDTH: 75px; CURSOR: hand; COLOR: #00043e; BACKGROUND-REPEAT: no-repeat; TEXT-ALIGN: center; TEXT-DECORATION: none
+}
+.Tabon A:link {
+	COLOR: #00043e; TEXT-DECORATION: none
+}
+.Tabon A:visited {
+	COLOR: #00043e; TEXT-DECORATION: none
+}
+.Tabon A:hover {
+	COLOR: #00043e; TEXT-DECORATION: none
+}
+.Taboff {
+	BACKGROUND-POSITION: left 50%; FONT-WEIGHT: bold; FILTER: DropShadow(Color=#ffffff, OffX=1, OffY=1, Positive=1); BACKGROUND-IMAGE: url(../images/per_ico2_.gif); WIDTH: 75px; CURSOR: hand; COLOR: #00043e; BACKGROUND-REPEAT: no-repeat; TEXT-ALIGN: center
+}
+.Taboff A:link {
+	COLOR: #00043e; TEXT-DECORATION: none
+}
+.Taboff A:visited {
+	COLOR: #00043e; TEXT-DECORATION: none
+}
+.Taboff A:hover {
+	COLOR: #00043e; TEXT-DECORATION: none
+}
+.fff {
+	COLOR: #ffffff
+}
+.fff A:link {
+	COLOR: #ffffff
+}
+.fff A:visited {
+	COLOR: #ffffff
+}
+.fff A:hover {
+	COLOR: #ffffff
+}
+.bold {
+	FONT-WEIGHT: bold
+}
+.line {
+	BACKGROUND-POSITION: 50% bottom; BACKGROUND-IMAGE: url(../images/line_bg.gif); BACKGROUND-REPEAT: repeat-x; BACKGROUND-COLOR: #f4f4f4
+}
+.line2 {
+	BORDER-BOTTOM: #dddddd 1px dotted
+}

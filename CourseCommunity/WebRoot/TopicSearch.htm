@@ -1,0 +1,130 @@
+﻿<HTML>
+<HEAD><TITLE>讨论话题</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<SCRIPT language=javascript src="js/Default.js"></SCRIPT>
+<SCRIPT language=javascript src="js/TopicSearch.js"></SCRIPT>
+<LINK href="css/Global.css" type="text/css" rel=stylesheet>
+<LINK href="css/Portal.css" type="text/css" rel=stylesheet>
+<LINK href="css/Style.css" type="text/css" rel=stylesheet>
+<STYLE>.Button {
+	BACKGROUND-IMAGE: url(images/Button.gif)
+}
+.ButtonLarge {
+	BACKGROUND-IMAGE: url(images/ButtonLarge.gif)
+}
+</STYLE>
+</HEAD>
+<BODY bottomMargin=0 leftMargin=0 topMargin=0 rightMargin=0>
+<FORM id=form1 name=form1 action=TopicSearch.htm?ID=10000005 method=post>
+<SCRIPT type=text/javascript>
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+//]]>
+</SCRIPT>
+<TABLE height="100%" width="100%">
+  <TBODY>
+  <TR>
+    <TD background=images/per_case_bg.gif bgColor=#ffffff 
+      height=27><TABLE cellSpacing=5 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD><B><SPAN id=lblHead>现在位置: 公共论坛 &gt; 编程基础</SPAN></B> 
+        </TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD style="HEIGHT: 28px">&nbsp;<A id=hlAll 
+      href="TopicSearch.htm">全部</A> 
+      <A id=hlDistillate 
+      href="TopicSearch.htm">精华区</A> 
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+      &nbsp; 查询条件: <INPUT class=ColorBlur id=txtSearch 
+      onblur="this.className='ColorBlur';" style="WIDTH: 200px" 
+      onfocus="this.className='ColorFocus';" tabIndex=1 maxLength=100 
+      name=txtSearch> <INPUT class=button id=btnSearch onMouseOver="this.style.backgroundImage='url(images/Buttonm.gif)';" accessKey=Q onClick="return CheckSearchContent();" tabIndex=2 onMouseOut="this.style.backgroundImage='url(images/Button.gif)';" type=submit value=查询(Q) name=btnSearch></TD></TR>
+  <TR>
+    <TD vAlign=top width="100%" height="100%">
+      <DIV style="OVERFLOW: auto; WIDTH: 100%; HEIGHT: 100%">
+      <DIV>
+      <TABLE id=grdTopic 
+      style="BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; WIDTH: 100%; BORDER-BOTTOM: #cccccc 1px solid; BORDER-COLLAPSE: collapse; BACKGROUND-COLOR: white" 
+      cellSpacing=0 cellPadding=1 rules=all border=1>
+        <TBODY>
+        <TR style="FONT-WEIGHT: normal; FONT-SIZE: 12px; WHITE-SPACE: nowrap; HEIGHT: 30px; BACKGROUND-COLOR: #efefef" 
+        vAlign=center align=middle>
+          <TH style="FONT-WEIGHT: normal" scope=col>&nbsp;</TH>
+          <TH style="FONT-WEIGHT: normal" scope=col>&nbsp;</TH>
+          <TH style="FONT-WEIGHT: normal" scope=col>标题</TH>
+          <TH style="FONT-WEIGHT: normal" scope=col>作者</TH>
+          <TH style="FONT-WEIGHT: normal" scope=col>回复/查看</TH>
+          <TH style="FONT-WEIGHT: normal" scope=col>最后回复</TH></TR>
+        <TR onMouseOver="myColor =this.style.backgroundColor;this.style.backgroundColor='LemonChiffon';" 
+        style="HEIGHT: 30px" onMouseOut="this.style.backgroundColor = myColor;">
+          <TD style="WIDTH: 40px" align=middle><IMG src="images/nonew.gif"></TD>
+          <TD style="WIDTH: 30px" align=middle></TD>
+          <TD style="WIDTH: 650px; WHITE-SPACE: nowrap">[求助] <A href="TopicReplyList.htm">英语学习中的一些问题 
+            </A></TD>
+          <TD style="WIDTH: 100px; WHITE-SPACE: nowrap" align=middle><A href="/User/UserInfo.htm?ID=10003296">abc 
+            </A><BR>2008-09-28 </TD>
+          <TD style="WIDTH: 80px; WHITE-SPACE: nowrap" align=middle>5 /143 </TD>
+          <TD style="WIDTH: 150px; WHITE-SPACE: nowrap" align=middle><A href="/User/UserInfo.htm?ID=10006711">王正会 
+            </A><BR>2009-03-11 18:46:00 </TD></TR>
+        <TR onMouseOver="myColor =this.style.backgroundColor;this.style.backgroundColor='LemonChiffon';" 
+            style="HEIGHT: 30px; BACKGROUND-COLOR: whitesmoke" onMouseOut="this.style.backgroundColor = myColor;">
+          <TD style="WIDTH: 40px" align=middle><IMG src="images/nonew.gif"></TD>
+          <TD style="WIDTH: 30px" align=middle><IMG src="images/icon3.gif"></TD>
+          <TD style="WIDTH: 650px; WHITE-SPACE: nowrap">[原创] <A href="TopicReplyList.htm">关于课程开设的一些建议 
+            </A></TD>
+          <TD style="WIDTH: 100px; WHITE-SPACE: nowrap" align=middle><A href="/User/UserInfo.htm?ID=10000179">zhang 
+            </A><BR>2008-04-22 </TD>
+          <TD style="WIDTH: 80px; WHITE-SPACE: nowrap" align=middle>0 /53 </TD>
+          <TD style="WIDTH: 150px; WHITE-SPACE: nowrap" align=middle><A href="/User/UserInfo.htm?ID=10000179">吴途 
+            </A><BR>2008-04-22 19:40:00 </TD></TR>
+        <TR onMouseOver="myColor =this.style.backgroundColor;this.style.backgroundColor='LemonChiffon';" 
+        style="HEIGHT: 30px" onMouseOut="this.style.backgroundColor = myColor;">
+          <TD style="WIDTH: 40px" align=middle><IMG src="images/nonew.gif"></TD>
+          <TD style="WIDTH: 30px" align=middle><IMG src="images/icon3.gif"></TD>
+          <TD style="WIDTH: 650px; WHITE-SPACE: nowrap">[原创] <A href="TopicReplyList.htm">各类话题在这里交流! 
+            </A></TD>
+          <TD style="WIDTH: 100px; WHITE-SPACE: nowrap" align=middle><A href="/User/UserInfo.htm?ID=10000179">wang 
+            </A><BR>2008-04-13 </TD>
+          <TD style="WIDTH: 80px; WHITE-SPACE: nowrap" align=middle>0 /48 </TD>
+          <TD style="WIDTH: 150px; WHITE-SPACE: nowrap" align=middle><A href="/User/UserInfo.htm?ID=10000179">吴途 
+            </A><BR>2008-04-13 10:35:00 </TD>
+        </TR></TBODY>
+      </TABLE></DIV></DIV>
+    </TD>
+  </TR>
+  <TR>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD vAlign=center align=right>当前<SPAN id=myNavigator_lblCurrentPage 
+            style="COLOR: blue">1</SPAN>/<SPAN id=myNavigator_lblPageCount 
+            style="COLOR: blue">1</SPAN>页 &nbsp; 共<SPAN 
+            id=myNavigator_lblRowCount style="COLOR: blue">3</SPAN>条记录 &nbsp; <A 
+            id=myNavigator_lbtnFirst disabled>首页</A> |&nbsp;<A 
+            id=myNavigator_lbtnPrevious disabled>上页</A> |&nbsp;<A 
+            id=myNavigator_lbtnNext disabled>下页</A> |&nbsp;<A 
+            id=myNavigator_lbtnLast disabled>尾页</A> &nbsp; 
+            <SELECT id=myNavigator_cmbPerPage style="WIDTH: 60px" name=myNavigator$cmbPerPage> 
+                <OPTION value=10>1</OPTION> 
+                <OPTION value=15 selected>15</OPTION> 
+                <OPTION value=20>20</OPTION> 
+                <OPTION value=25>25</OPTION> 
+                <OPTION value=30>30</OPTION> 
+                <OPTION value=50>50</OPTION> 
+            </SELECT> 条/每页</TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD style="HEIGHT: 30px" vAlign=center align=middle>
+      <INPUT class=ButtonLarge id=btnNew onMouseOver="this.style.backgroundImage='url(images/ButtonLargem.gif)';" tabIndex=1 onMouseOut="this.style.backgroundImage='url(images/ButtonLarge.gif)';" type="button" value=发表主题 name=btnNew onClick="javascript:window.location='TopicAdd.htm'"></TD>
+  </TR>
+  </TBODY>
+</TABLE>
+<INPUT id=txtCourseID type=hidden name=txtCourseID> 
+<INPUT id=txtCategory type=hidden name=txtCategory> 
+</FORM>
+</BODY>
+</HTML>

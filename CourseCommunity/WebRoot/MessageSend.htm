@@ -1,0 +1,71 @@
+﻿<html>
+<head><title>发送消息</title>
+<base target="_self" />
+<script language='javascript' src='js/Default.js'></script>
+<script language='javascript' src='js/MessageAdd.js'></script>
+<link rel="stylesheet" type="text/css" href="css/PersonalStyle.css" />
+</head>
+<body>
+<form name="Form1" method="post" action="MessageSend.htm" id="Form1">
+<table width="98%" height="100%" border="0" align="center" cellpadding="0" cellspacing="0"
+    class="case">
+    <tr>
+        <td height="27" background="images/per_case_bg.gif"
+            bgcolor="#FFFFFF">
+            <table width="100%" border="0" cellspacing="5" cellpadding="0">
+                <tr>
+                    <td>
+                        <b>现在位置 > <a href="MessageList.aspx">消息中心</a> > 发送消息</b></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" bgcolor="#FFFFFF">
+            <table border="0" width="100%" cellspacing="5" cellpadding="0">
+                <tr>
+                    <td width="20%">
+                        接收者: *</td>
+                    <td width="40%">
+                        <input name="txtReceiver" type="text" maxlength="20" id="txtReceiver" tabindex="1" class="input" style="width:200px;" />
+                        <a href="javascript:Search();">查找用户</a></td>
+                    <td width="40%">
+                        请正确填写接收者用户名</td>
+                </tr>
+                <tr>
+                    <td width="20%">
+                        标题:*</td>
+                    <td width="40%">
+                        <input name="txtTitle" type="text" maxlength="100" id="txtTitle" tabindex="2" class="input" style="width:100%;" /></td>
+                    <td width="40%">
+                        请填写短消息标题</td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        内容:*</td>
+                    <td>
+                        <textarea name="txtContent" rows="5" cols="50" id="txtContent" tabindex="4" class="input"></textarea>
+                    </td>
+                    <td>
+                        请填写短消息内容</td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;</td>
+                    <td colspan="2">
+                        <span id="lblPrompt" style="color:Red;"> </span></td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        &nbsp;</td>
+                    <td colspan="3">
+                        <input type="submit" name="btnSave" value="发送(S)" onclick="return CheckInput();" id="btnSave" accesskey="S" tabindex="8" class="bt" />
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+        </table>
+</form>
+</body>
+</html>

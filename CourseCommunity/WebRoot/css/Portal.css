@@ -1,0 +1,81 @@
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; SCROLLBAR-FACE-COLOR: #dee3e7; FONT-SIZE: 12px; BACKGROUND: #ffffff; PADDING-BOTTOM: 0px; MARGIN: 0px; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #dee3e7; COLOR: #000003; SCROLLBAR-3DLIGHT-COLOR: #d1d7dc; LINE-HEIGHT: 135%; SCROLLBAR-ARROW-COLOR: #006699; PADDING-TOP: 0px; SCROLLBAR-TRACK-COLOR: #f6f6f6; SCROLLBAR-DARKSHADOW-COLOR: #98aab1; TEXT-ALIGN: left
+}
+.breadcrumbHeader {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 10px; FONT-SIZE: 10pt; BACKGROUND: #eeeeee; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; BORDER-BOTTOM: #cccccc 1px solid; FONT-FAMILY: Verdana
+}
+.deflistListItem {
+	PADDING-BOTTOM: 10px
+}
+.portalHeader {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-SIZE: 68%; BACKGROUND: #4a5c82; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 5px; BORDER-BOTTOM: #cccccc 5px solid; FONT-FAMILY: verdana
+}
+.portalTitle {
+	PADDING-LEFT: 5px; FONT-SIZE: 16pt; COLOR: white
+}
+.searchText {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; FONT-SIZE: 10pt; MARGIN-BOTTOM: 1px; PADDING-BOTTOM: 2px; MARGIN-LEFT: 5px; COLOR: gray; PADDING-TOP: 2px; HEIGHT: 20px
+}
+.sidebar {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; MARGIN-TOP: 10px; MARGIN-LEFT: 10px; BORDER-LEFT: #cccccc 1px solid; MARGIN-RIGHT: 10px; BORDER-BOTTOM: #cccccc 1px solid
+}
+.sidebarContent {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 10px; FONT-SIZE: 10pt; PADDING-BOTTOM: 5px; PADDING-TOP: 5px
+}
+.sidebarHeader {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 10pt; BACKGROUND: #f2f2f2; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; BORDER-BOTTOM: black 0px solid
+}
+.sidebarListItem {
+	PADDING-BOTTOM: 5px
+}
+.tabstripNav {
+	DISPLAY: inline; MARGIN-LEFT: 5px; OVERFLOW: hidden; POSITION: relative; TOP: 5px; HEIGHT: 23px
+}
+.toolbarPanel {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; WIDTH: 197px; MARGIN-RIGHT: 8px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #4a5c82
+}
+.userStore {
+	BEHAVIOR: url(#default#userData)
+}
+FORM {
+	PADDING-RIGHT: 0px; DISPLAY: inline; PADDING-LEFT: 0px; FONT-SIZE: 10pt; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; FONT-FAMILY: ??
+}
+TD {
+	FONT-SIZE: 10pt; FONT-FAMILY: ??
+}
+H1 {
+	FONT-SIZE: 16pt
+}
+H2 {
+	FONT-SIZE: 12pt; FONT-FAMILY: arial
+}
+IMG {
+	MARGIN-LEFT: 5px; MARGIN-RIGHT: 5px
+}
+INPUT {
+	FONT-SIZE: 10pt; FONT-FAMILY: verdana
+}
+.edit {
+	FONT-SIZE: 10pt; BORDER-TOP-STYLE: none; BORDER-BOTTOM: #9999cc 1px solid; FONT-FAMILY: ??; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: transparent
+}
+.need {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; FONT-SIZE: 10pt; BORDER-LEFT: medium none; BORDER-BOTTOM: #ff9801 1px solid; FONT-FAMILY: ??; BACKGROUND-COLOR: transparent
+}
+.popularityBar {
+	BACKGROUND-POSITION: left 50%; FONT-SIZE: 0px; FLOAT: left; BACKGROUND-IMAGE: url(Images/popularity_rank_bg.gif); WIDTH: 45px; BACKGROUND-REPEAT: repeat-x; HEIGHT: 10px
+}
+.popularityBarFull {
+	BORDER-RIGHT: #666666 1px solid; BACKGROUND-POSITION: left 50%; BORDER-TOP: #666666 1px solid; BACKGROUND-IMAGE: url(Images/popularity_rank_full_bg.gif); BORDER-LEFT: #666666 1px solid; WIDTH: 45px; BORDER-BOTTOM: #666666 1px solid; BACKGROUND-REPEAT: repeat-x; HEIGHT: 10px
+}
+A:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}

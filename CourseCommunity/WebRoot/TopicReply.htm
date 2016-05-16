@@ -1,0 +1,87 @@
+﻿<html>
+<head>
+<title>课程论坛</title>
+<base target="_self" />
+<script language='javascript' src='js/Default.js'></script>
+<script language='javascript' src='js/ReplyAdd.js'></script>
+<link rel="stylesheet" type="text/css" href="css/Global.css">
+<link rel="stylesheet" type="text/css" href="css/Portal.css">
+<link rel="stylesheet" type="text/css" href="css/Style.css">
+<style>
+    .Button
+    {
+        background-image: url(images/Button.gif);
+    }
+    .ButtonLarge
+    {
+        background-image: url(images/ButtonLarge.gif);
+    }
+</style>
+</head>
+<body topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0">
+<form name="form1" method="post" action="TopicReply.htm?ID=10000076" id="form1" enctype="multipart/form-data">
+<table width="100%" height="100%">
+    <tr>
+        <td height="27" background="images/per_case_bg.gif"
+            bgcolor="#FFFFFF">
+            <table width="100%" border="0" cellspacing="5" cellpadding="0">
+                <tr>
+                    <td>
+                        <b>
+                            <span id="lblHead">现在位置: 公共论坛 > <a href='TopicSearch.htm?ID=10000000'>教学集市</a> > 回复主题</span></b>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td width="100%" height="100%" valign="top">
+            <div style="overflow: auto; width: 100%; height: 100%">
+                <table>
+                    <tr>
+                        <td valign="top" style="width: 10%;">
+                            内容: <font color="red">*</font></td>
+                        <td colspan="2">
+                            <textarea name="txtContent" rows="2" cols="20" id="txtContent" tabindex="1" class="ColorBlur" onBlur="this.className='ColorBlur';" onfocus="this.className='ColorFocus';" style="height:308px;width:100%;"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            附件:
+                        </td>
+                        <td colspan="2">
+                            <input type="file" name="fulAttachment" id="fulAttachment" tabindex="2" style="width:500px;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="10%">
+                            验证码: <font color="red">*</font>
+                        </td>
+                        <td valign="top" width="10%">
+                            <input name="txtCheckCode" type="text" maxlength="20" id="txtCheckCode" tabindex="6" style="width:120px;" /></td>
+                        <td width="90%">
+                            <img src="CheckImage.htm" id='CheckCode' onclick="return change();"
+                                style="border: 0"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;</td>
+                        <td colspan="2">
+                            <span id="lblPrompt" style="color:Red;"> </span></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td align="center" valign="middle" style="height: 30px">
+            <input type="submit" name="btnSave" value="保存(S)" onclick="return CheckInput('False');" id="btnSave" accesskey="S" tabindex="3" class="Button" onmouseover="this.style.backgroundImage='url(images/Buttonm.gif)';" onmouseout="this.style.backgroundImage='url(images/Button.gif)';" />
+            <input type="button" name="btnBack" value="返回(B)" id="btnBack" accesskey="B" tabindex="4" class="Button" onmouseover="this.style.backgroundImage='url(images/Buttonm.gif)';" onmouseout="this.style.backgroundImage='url(images/Button.gif)';" onclick="javascript:history.go(-1)"/>
+        </td>
+    </tr>
+</table>
+<input type="hidden" name="txtID" id="txtID" value="10000076" />
+<input type="hidden" name="txtCourseID" id="txtCourseID" />
+</form>
+</body>
+</html>

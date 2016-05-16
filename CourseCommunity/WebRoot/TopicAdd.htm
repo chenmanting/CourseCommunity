@@ -1,0 +1,113 @@
+﻿<HTML><HEAD><TITLE>发表话题</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<SCRIPT language=javascript src="js/Default.js"></SCRIPT>
+<SCRIPT language=javascript src="js/TopicAdd.js"></SCRIPT>
+<LINK href="css/Global.css" type=text/css rel=stylesheet><LINK 
+href="css/Portal.css" type=text/css rel=stylesheet><LINK 
+href="css/Style.css" type=text/css rel=stylesheet>
+<STYLE>.Button {
+	BACKGROUND-IMAGE: url(images/Button.gif)
+}
+.ButtonLarge {
+	BACKGROUND-IMAGE: url(images/ButtonLarge.gif)
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2900.5764" name=GENERATOR></HEAD>
+<BODY>
+<FORM id=form1 name=form1 action=TopicAdd.htm method=post encType=multipart/form-data>
+<TABLE height="100%" width="100%">
+  <TBODY>
+  <TR>
+    <TD background=images/per_case_bg.gif bgColor=#ffffff height=27>
+      <TABLE cellSpacing=5 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD><B><SPAN id=lblHead>现在位置: 公共论坛 &gt; <A 
+            href="TopicSearch.htm?ID=10000000">课程讨论</A> 
+            &gt; 发表主题</SPAN></B> </TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD vAlign=top width="100%" height="100%">
+      <DIV style="OVERFLOW: auto; WIDTH: 100%; HEIGHT: 100%">
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD noWrap width="10%">标题: <FONT color=red>*</FONT> </TD>
+          <TD colSpan=2><INPUT class=ColorBlur id=txtTitle 
+            onblur="this.className='ColorBlur';" style="WIDTH: 300px" 
+            onfocus="this.className='ColorFocus';" tabIndex=1 maxLength=100 
+            name=txtTitle> </TD></TR>
+        <TR>
+          <TD noWrap>类别: <FONT color=red>*</FONT> </TD>
+          <TD colSpan=2><SELECT id=ddlCategory tabIndex=2 name=ddlCategory> 
+              <OPTION value="" selected></OPTION> <OPTION 
+              value=10000365>原创</OPTION> <OPTION value=10000366>求助</OPTION> 
+              <OPTION value=10000367>转帖</OPTION> <OPTION 
+              value=10000368>公告</OPTION> <OPTION value=10000369>杂谈</OPTION> 
+              <OPTION value=10000370>讨论</OPTION> <OPTION 
+              value=10000371>建议</OPTION> <OPTION 
+            value=10000372>推荐</OPTION></SELECT> </TD></TR>
+        <TR>
+          <TD noWrap>图标: </TD>
+          <TD colSpan=2>
+            <TABLE id=rblIcon border=0>
+              <TBODY>
+              <TR>
+                <TD><INPUT id=rblIcon_0 tabIndex=3 type=radio CHECKED value=无 
+                  name=rblIcon><LABEL for=rblIcon_0>无</LABEL></TD>
+                <TD><INPUT id=rblIcon_1 tabIndex=3 type=radio value=10000358 
+                  name=rblIcon><LABEL for=rblIcon_1><IMG 
+                  src="images/icon1.gif"></LABEL></TD>
+                <TD><INPUT id=rblIcon_2 tabIndex=3 type=radio value=10000359 
+                  name=rblIcon><LABEL for=rblIcon_2><IMG 
+                  src="images/icon2.gif"></LABEL></TD>
+                <TD><INPUT id=rblIcon_3 tabIndex=3 type=radio value=10000360 
+                  name=rblIcon><LABEL for=rblIcon_3><IMG 
+                  src="images/icon3.gif"></LABEL></TD>
+                <TD><INPUT id=rblIcon_4 tabIndex=3 type=radio value=10000361 
+                  name=rblIcon><LABEL for=rblIcon_4><IMG 
+                  src="images/icon4.gif"></LABEL></TD>
+                <TD><INPUT id=rblIcon_5 tabIndex=3 type=radio value=10000362 
+                  name=rblIcon><LABEL for=rblIcon_5><IMG 
+                  src="images/icon5.gif"></LABEL></TD>
+                <TD><INPUT id=rblIcon_6 tabIndex=3 type=radio value=10000363 
+                  name=rblIcon><LABEL for=rblIcon_6><IMG 
+                  src="images/icon6.gif"></LABEL></TD>
+                <TD><INPUT id=rblIcon_7 tabIndex=3 type=radio value=10000373 
+                  name=rblIcon><LABEL for=rblIcon_7><IMG 
+                  src="images/icon7.gif"></LABEL></TD>
+                <TD><INPUT id=rblIcon_8 tabIndex=3 type=radio value=10000374 
+                  name=rblIcon><LABEL for=rblIcon_8><IMG 
+                  src="images/icon8.gif"></LABEL></TD>
+                <TD><INPUT id=rblIcon_9 tabIndex=3 type=radio value=10000375 
+                  name=rblIcon><LABEL for=rblIcon_9><IMG 
+                  src="images/icon9.gif"></LABEL></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD vAlign=top noWrap>内容: <FONT color=red>*</FONT></TD>
+          <TD colSpan=2><TEXTAREA class=ColorBlur id=txtContent onblur="this.className='ColorBlur';" style="WIDTH: 100%; HEIGHT: 208px" onfocus="this.className='ColorFocus';" tabIndex=4 name=txtContent></TEXTAREA> 
+          </TD></TR>
+        <TR>
+          <TD>附件: </TD>
+          <TD colSpan=2><INPUT id=fulAttachment style="WIDTH: 500px" 
+            tabIndex=5 type=file name=fulAttachment> </TD></TR>
+        <TR>
+          <TD width="10%">验证码: <FONT color=red>*</FONT> </TD>
+          <TD vAlign=top width="10%"><INPUT id=txtCheckCode 
+            style="WIDTH: 120px" tabIndex=6 maxLength=6 name=txtCheckCode></TD>
+          <TD width="90%"><IMG id=CheckCode 
+            style="BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px" 
+            onclick="return change();" src="CheckImage.htm"></TD></TR>
+        <TR>
+          <TD>&nbsp;</TD>
+          <TD colSpan=2><SPAN id=lblPrompt 
+        style="COLOR: red">&nbsp;</SPAN></TD></TR></TBODY></TABLE></DIV></TD></TR>
+  <TR>
+    <TD style="HEIGHT: 30px" vAlign=center align=middle>
+        <INPUT class=Button id=btnSave onmouseover="this.style.backgroundImage='url(images/Buttonm.gif)';" accessKey=S onclick="return CheckInput();" tabIndex=6 onmouseout="this.style.backgroundImage='url(images/Button.gif)';" type=submit value=保存(S) name=btnSave> 
+        <INPUT class=Button id=btnBack onmouseover="this.style.backgroundImage='url(images/Buttonm.gif)';" accessKey=B tabIndex=7 onmouseout="this.style.backgroundImage='url(images/Button.gif)';" type=submit value=返回(B) name=btnBack> 
+    </TD></TR></TBODY></TABLE>
+<INPUT id=txtID type=hidden value=10000000 name=txtID> 
+<INPUT id=txtCourseID type=hidden name=txtCourseID> 
+</FORM>
+</BODY>
+</HTML>

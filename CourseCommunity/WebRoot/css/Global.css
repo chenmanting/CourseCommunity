@@ -1,0 +1,15 @@
+BODY {
+	FONT-FAMILY: ??
+}
+TD {
+	FONT-SIZE: 10pt
+}
+TABLE {
+	CURSOR: default
+}
+BUTTON {
+	BORDER-RIGHT: #7b9ebd 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #7b9ebd 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 10pt; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#ffffff, EndColorStr=#EBEBE5); BORDER-LEFT: #7b9ebd 1px solid; CURSOR: hand; BORDER-BOTTOM: #7b9ebd 1px solid; FONT-FAMILY: Tahoma, ??
+}
+TABLE.stdTable {
+	TABLE-LAYOUT: fixed; WIDTH: 100%; HEIGHT: 100%
+}
