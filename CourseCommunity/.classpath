@@ -20,14 +20,15 @@
 			<attribute name="owner.project.facets" value="jst.web.jstl"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/log4j"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="com.genuitec.runtime.library/com.genuitec.hibernate_4.1">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="WEB-INF/lib"/>
-			<attribute name="owner.project.facets" value="me.hibernate;#system#"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/strust-core"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/log4j"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/struts2.1"/>
+	<classpathentry kind="lib" path="C:/Users/cmt/Desktop/51CTO下载-jsmartcom_zh_CN/jsmartcom_zh_CN.jar"/>
+	<classpathentry kind="lib" path="C:/dev/lib/struts2-core/struts2-dojo-plugin-2.3.28.1.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

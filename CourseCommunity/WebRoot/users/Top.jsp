@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <TBODY>
         <TR>
           <TD vAlign=top>
-             <img src="images/logo.gif">
+            <img src="images/logo.gif" >
           </TD></TR></TBODY></TABLE></TD>
     <TD vAlign=top>
       <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
@@ -38,10 +38,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <TBODY>
                     <TR>
                       <TD width=50><A 
-                        href="javascript:window.parent.location.href='index.htm'"><IMG 
+                        href="javascript:window.parent.location.href='<%=path%>/index.jsp'"><IMG 
                         height=11 src="images/per_home.gif" width=38 
                         border=0></A></TD>
-                      <TD><A href="javascript:top.location.href='Login.htm'"><IMG 
+                      <TD><A target="_parent" href="<%=path%>/users/User_logout.action?username=cmt"><IMG 
                         height=11 src="images/per_quit.gif" width=37 
                         border=0></A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
         <TR>
@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               <LABEL id=time>时间</LABEL></B></TD>
           <TD><A href="/MessageList.aspx" target=Main>
             <IFRAME id=message style="OVERFLOW: hidden; BACKGROUND-COLOR: transparent" align=middle 
-                src="MessageNew.aspx" frameBorder=0 width=110 height=19 allowTransparency scrolling="no">
+                src="#" frameBorder=0 width=110 height=19 allowTransparency scrolling="no">
             </IFRAME></A></TD>
         </TR>
         </TBODY>

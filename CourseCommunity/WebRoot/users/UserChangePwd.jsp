@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <title>密码修改</title>
 <base target="_self" />
-<link rel="stylesheet" type="text/css" href="css/PersonalStyle.css">
+<link rel="stylesheet" type="text/css" href="css/personalstyle.css">
 <script language="javascript" src="js/Default.js"></script>
 <script language="javascript">
 document.onkeydown = function EnterToTab() {
@@ -20,7 +20,7 @@ document.onkeydown = function EnterToTab() {
 </script>
 </head>
 <body>
-<form name="form1" method="post" action="<%=path%>/users/User_updatePassword.action" id="form1">
+<form name="form1" method="post"  id="form1">
 <table width="98%" height="100%" border="0" align="center" cellpadding="0" cellspacing="0"
     class="case">
     <tr>
@@ -71,7 +71,7 @@ document.onkeydown = function EnterToTab() {
                     <td align="center">
                         </td>
                     <td colspan="2">
-                        <input type="submit" name="btnConfirm" value="确定(C)" onclick="return CheckInput(true);" id="btnConfirm" accesskey="C" tabindex="4" class="bt" />
+                        <input type="submit" name="btnConfirm" value="确定(C)" onclick="return submitForm();" id="btnConfirm" accesskey="C" tabindex="4" class="bt" />
                     </td>
                 </tr>
             </table>
@@ -80,8 +80,50 @@ document.onkeydown = function EnterToTab() {
         </table>
 </form>
 </body>
+<script type="text/javascript" src="js/jquery.js"></script>
 <script language="javascript">
 	document.all["txtOldPassword"].focus();
+	function submitForm(){
+		var oldP = $("#txtOldPassword").val();
+		
+		if(oldP == undefined || oldP == "" || oldP == null){
+			alert("请输入原始密码！");
+			return false;
+		}
+		
+		var newP = $("#txtNewPassword").val();
+		var comfirmP = $("#txtConfirmPassword").val();
+		if(newP != comfirmP){
+			alert("俩次密码输入不一致");
+			return false;
+		}
+		var url = "<%=path%>/users/User_updatePassword.action";
+		$.ajax({
+			url: url,
+			data:{
+				'txtOldPassword':$("#txtOldPassword").val(),
+				'txtNewPassword':$("#txtNewPassword").val()
+				},
+			cache:false,
+			success:function(result){
+				//alert(result);
+   				if("oldPwdError" == result){
+   					alert("原始密码输入错误！");
+				}else if("updatePwdSuccess" == result){
+					alert("密码修改成功！");
+				}else if("updatePwdFailure" ==  result){
+					alert("密码修改失败！");
+				}else{
+					alert("其它原因导致密码修改失败~");
+				}
+   			},
+			error: function(){
+				alert("error");
+			}
+		});
+		return false;
+	}
+	
 	
 </script>
 </html>

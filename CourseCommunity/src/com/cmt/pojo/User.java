@@ -1,6 +1,8 @@
 package com.cmt.pojo;
 
-import com.mysql.jdbc.Blob;
+import java.sql.Blob;
+
+
 
 public class User {
 	

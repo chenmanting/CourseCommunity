@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,50 +10,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>×¢²áÒ³Ãæ</title>
+    <title>æ³¨å†Œé¡µé¢</title>
     
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	
   </head>
   
   <body>
-  	
   	<div class="container">
-  	<h2 class="text-center">×¢²áÒ³Ãæ</h2>
+  	<h2 class="text-center">æ³¨å†Œé¡µé¢</h2>
   	<hr>
-  	
   	<div class="row">
   	<div class="col-xs-6 col-md-offset-3">
 	<form class="form-horizontal" role="form" id="myForm"  action="<%=basePath%>users/User_registe.action" method=post>
-   		
    		<div class="form-group" >
-      		<label for="username" class="col-sm-2 control-label">ÓÃ»§Ãû</label>
+      		<label for="username" class="col-sm-2 control-label">ç”¨æˆ·å</label>
 	      	<div class="col-sm-10">
 	        <input type="text" name="username" class="form-control" id="username" 
-            	placeholder="ÇëÊäÈëÓÃ»§Ãû" >
+            	placeholder="è¯·è¾“å…¥ç”¨æˆ·å,ç™»å½•ç”¨" >
             	<span id="usernameStatus">
       		</div>
    		</div>
    		<div class="form-group">
-      		<label for="password"  class="col-sm-2 control-label">ÃÜÂë</label>
+      		<label for="name"  class="col-sm-2 control-label">å§“å</label>
+      		<div class="col-sm-10">
+         	<input type="text" name="name" class="form-control" id="name" 
+            	placeholder="è¯·è¾“å…¥çœŸå®å§“å">
+      		</div>
+   		</div>
+   		<div class="form-group">
+      		<label for="password"  class="col-sm-2 control-label">å¯†ç </label>
       		<div class="col-sm-10">
          	<input type="password" name="password" class="form-control" id="password" 
-            	placeholder="ÇëÊäÈëÃÜÂë">
+            	placeholder="è¯·è¾“å…¥å¯†ç ">
             <span id="pwdStatus">
       		</div>
    		</div>
    		<div class="form-group">
-      		<label for="password1" class="col-sm-2 control-label">ÃÜÂë</label>
+      		<label for="password1" class="col-sm-2 control-label">å¯†ç </label>
       		<div class="col-sm-10">
          	<input type="password" class="form-control" id="password1" 
-            	placeholder="ÇëÔÙ´ÎÊäÈëÃÜÂë" >
+            	placeholder="è¯·å†æ¬¡è¾“å…¥å¯†ç " >
             <span id="pwd1Status">
       		</div>
    		</div>
    		
    		<div class="form-group">
       		<div class="col-sm-offset-2 col-sm-10">
-         		<button type="submit"  onclick="return clickSubmitBtn()" class="btn btn-default">×¢²á</button>
+         		<button type="submit"  onclick="return clickSubmitBtn()" class="btn btn-default">æ³¨å†Œ</button>
       		</div>
    		</div>
 	</form>
@@ -73,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 		$("#username").blur(function(){
 			if(username.value == undefined || username.value  == "" || username.value  == null){
-				$("#usernameStatus").text("ÇëÊäÈëÓÃ»§Ãû");
+				$("#usernameStatus").text("è¯·è¾“å…¥ç”¨æˆ·å");
 				$("#usernameStatus").css("color","red");
 				return false;
 			}
@@ -85,10 +90,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				data:{ username :username.value},
 				success:function(result){
     				if("false" == result){
-						$("#usernameStatus").text("¸ÃÕË»§¿ÉÒÔÊ¹ÓÃ");
+						$("#usernameStatus").text("è¯¥è´¦æˆ·å¯ä»¥ä½¿ç”¨");
 						$("#usernameStatus").css("color","green");
 					}else{
-						$("#usernameStatus").text("¸ÃÕË»§ÒÑ±»Ê¹ÓÃ");
+						$("#usernameStatus").text("è¯¥è´¦æˆ·å·²è¢«ä½¿ç”¨");
 						$("#usernameStatus").css("color","red");
 					}
     			},
@@ -105,7 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$("#password").blur(function(){
 			var password = $("#password").val();
 			if(password == undefined || password == "" || password == null){
-				$("#pwdStatus").text("ÇëÊäÈëÃÜÂë");
+				$("#pwdStatus").text("è¯·è¾“å…¥å¯†ç ");
 				$("#pwdStatus").css("color","red");
 			}
 		});
@@ -117,11 +122,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$("#password1").blur(function(){
 			var password = $("#password1").val();
 			if(password == undefined || password == "" || password == null){
-				$("#pwd1Status").text("ÇëÊäÈëÃÜÂë");
+				$("#pwd1Status").text("è¯·è¾“å…¥å¯†ç ");
 				$("#pwd1Status").css("color","red");
 			}
 			if($("#password").val() != $("#password1").val()){
-				$("#pwd1Status").text("Á©´ÎÊäÈëÃÜÂë²»Ò»ÖÂ");
+				$("#pwd1Status").text("ä¿©æ¬¡è¾“å…¥å¯†ç ä¸ä¸€è‡´");
 				$("#pwd1Status").css("color","red");
 			}
 		});
@@ -134,25 +139,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    			var url = "<%=basePath%>users/User_checkUsername.action";
    			
 			if(username == undefined || username == "" || username == null){
-				$("#usernameStatus").text("ÇëÊäÈëÓÃ»§Ãû");
+				$("#usernameStatus").text("è¯·è¾“å…¥ç”¨æˆ·å");
 				$("#usernameStatus").css("color","red");
 				return false;
 			}
 
 			if(password == undefined || password == "" || password == null){
-				$("#pwdStatus").text("ÇëÊäÈëÃÜÂë");
+				$("#pwdStatus").text("è¯·è¾“å…¥å¯†ç ");
 				$("#pwdStatus").css("color","red");
 				return false;
 			}
 			
 			if(password1 == undefined || password1 == "" || password1 == null){
-				$("#pwd1Status").text("ÇëÊäÈëÃÜÂë");
+				$("#pwd1Status").text("è¯·è¾“å…¥å¯†ç ");
 				$("#pwd1Status").css("color","red");
 				return false;
 			}
 			
 			if(password!= password1){
-				$("#pwd1Status").text("Á©´ÎÊäÈëÃÜÂë²»Ò»ÖÂ");
+				$("#pwd1Status").text("ä¿©æ¬¡è¾“å…¥å¯†ç ä¸ä¸€è‡´");
 				$("#pwd1Status").css("color","red");
 				return false;
 			}
@@ -169,12 +174,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				cache:false,
 				success:function(result){
    					if("false" == result){
-   						$("#usernameStatus").text("¸ÃÕË»§¿ÉÒÔÊ¹ÓÃ");
+   						$("#usernameStatus").text("è¯¥è´¦æˆ·å¯ä»¥ä½¿ç”¨");
 						$("#usernameStatus").css("color","green");
 						//alert(password);
 						$form.submit();
 					}else{
-						$("#usernameStatus").text("¸ÃÕË»§ÒÑ±»Ê¹ÓÃ");
+						$("#usernameStatus").text("è¯¥è´¦æˆ·å·²è¢«ä½¿ç”¨");
 						$("#usernameStatus").css("color","red");
 					}
    				},
@@ -185,7 +190,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         	return false;
 		};
 		/*
-		//±íµ¥¼ìÑé2
+		//è¡¨å•æ£€éªŒ2
 		function submitCheck(){
 
 			var username = $("#username").val();
@@ -193,25 +198,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var password1 = $("#password1").val();
 			
 			if(username == undefined || username == "" || username == null){
-				$("#usernameStatus").text("ÇëÊäÈëÓÃ»§Ãû");
+				$("#usernameStatus").text("è¯·è¾“å…¥ç”¨æˆ·å");
 				$("#usernameStatus").css("color","red");
 				return false;
 			}
 
 			if(password == undefined || password == "" || password == null){
-				$("#pwdStatus").text("ÇëÊäÈëÃÜÂë");
+				$("#pwdStatus").text("è¯·è¾“å…¥å¯†ç ");
 				$("#pwdStatus").css("color","red");
 				return false;
 			}
 			
 			if(password1 == undefined || password1 == "" || password1 == null){
-				$("#pwd1Status").text("ÇëÊäÈëÃÜÂë");
+				$("#pwd1Status").text("è¯·è¾“å…¥å¯†ç ");
 				$("#pwd1Status").css("color","red");
 				return false;
 			}
 			
 			if(password != password1){
-				$("#pwd1Status").text("Á©´ÎÊäÈëÃÜÂë²»Ò»ÖÂ");
+				$("#pwd1Status").text("ä¿©æ¬¡è¾“å…¥å¯†ç ä¸ä¸€è‡´");
 				$("#pwd1Status").css("color","red");
 				return false;
 			}
@@ -227,11 +232,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				cache:false,
 				success:function(result){
     				if("false" == result){
-    					$("#usernameStatus").text("¸ÃÕË»§¿ÉÒÔÊ¹ÓÃ");
+    					$("#usernameStatus").text("è¯¥è´¦æˆ·å¯ä»¥ä½¿ç”¨");
 						$("#usernameStatus").css("color","green");
 						ajaxFlag = true;
 					}else{
-						$("#usernameStatus").text("¸ÃÕË»§ÒÑ±»Ê¹ÓÃ");
+						$("#usernameStatus").text("è¯¥è´¦æˆ·å·²è¢«ä½¿ç”¨");
 						$("#usernameStatus").css("color","red");
 						
 					}

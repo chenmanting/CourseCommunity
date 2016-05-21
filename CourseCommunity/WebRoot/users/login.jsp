@@ -89,16 +89,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           <TR>
                             <TD class=bold align=right>验证码：</TD>
                             <TD width=60><INPUT class=input maxLength=4 
-                              name=verify width="100%"></TD>
+                              name=verify width="100%" value="8khh"></TD>
                             <TD><IMG onClick="return Change();" 
                               src="<%=path %>/images/checkcode.bmp" align=absMiddle 
                               border=0 name=images></TD></TR>
                           <TR>
                             <TD>&nbsp; </TD>
                             <TD colSpan=2><A 
-                              href="<%=path %>/UserRegister.htm"><B><FONT 
+                              href="<%=path %>/users/register.jsp"><B><FONT 
                               color=#ff3300>注册帐号</FONT></B></A> <A 
-                              href="<%=path %>/LosePassword.htm">忘密？</A></TD></TR>
+                              href="javascript:void(0);" onclick="forgetPwd()">忘密？</A></TD></TR>
                           <TR>
                             <TD>&nbsp; </TD>
                             <TD colSpan=2>
@@ -117,4 +117,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </TD>
           <TD style="BACKGROUND-POSITION: 50% top; BACKGROUND-REPEAT: no-repeat" 
           width=25 background=<%=path %>/images/sidebr2.gif>&nbsp; 
-      </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></BODY></HTML>
+      </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></BODY>
+      
+		<script type="text/javascript">
+			function forgetPwd(){
+				alert("暂未实现");
+			}
+		</script>   
+      
+</HTML>

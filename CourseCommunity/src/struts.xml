@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
+
+	<constant name="struts.custom.i18n.resources" value="app"></constant>
+
 	<package name="default" namespace="/" extends="struts-default"/>
 	
 	<package name="users" namespace="/users" extends="default">
 		<action name="*_*" class="com.cmt.action.{1}Action" method="{2}">
-			<result name="success">/main.jsp</result>
-			<result name="login_success">/main.jsp</result>
-			<result name="login_failure">/login.jsp</result>
-			<result name="registe_success">/main.jsp</result>
-			<result name="registe_failure">/register.jsp</result>
+			<result name="success"  type="redirect">/users/main.jsp</result>
+			<result name="login_success"  type="redirect">/users/main.jsp</result>
+			<result name="login_failure">/users/login.jsp</result>
+			<result name="registe_success"  type="redirect">/users/main.jsp</result>
+			<result name="registe_failure">/users/register.jsp</result>
+			<result name="editSuccess">/users/editsuccess.jsp</result>
+			<result name="editFailure">/users/editfailure.jsp</result>
+			<result name ="updateAvatarSuccess">/users/updateAvatarSuccess.jsp</result>
+			<result name="input">/error.jsp</result>
+			<!-- 配置拦截器 限制上传文件类型及大小 -->
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/bmp,image/x-png,image/gif,image/jpeg</param>
+				<param name="maximumSize">2M</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		<action name="upload" class="com.cmt.action.FileAction" method="updateAvatar">
+			<result>/users/UserAvatarChange.jsp</result>
+			<result name="input">/error.jsp</result>
+			<!-- 配置拦截器 限制上传文件类型及大小 -->
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/bmp,image/x-png,image/gif,image/jpeg</param>
+				<param name="maximumSize">2M</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
 	</package>
-	
-	
+
 	
 </struts>    

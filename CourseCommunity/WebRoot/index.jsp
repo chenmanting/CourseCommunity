@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -18,9 +19,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	
+	<link href="<%=path %>/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link rel="stylesheet" type="text/css" href="<%=path %>/css/bootstrap-datetimepicker.min.css"/ >
+	<script src="<%=path %>/js/jquery.js"></script>
+	<script src="<%=path %>/js/bootstrap-datetimepicker.min.js"></script>	
+	
   </head>
   
   <body>
-    This is my JSP page. <br>
+   <s:form action="uploadOne" method="post" enctype="multipart/form-data">
+            <s:file name="file" label="文件1"></s:file>
+            <s:file name="file" label="文件2"></s:file>
+            <s:file name="file" label="文件3"></s:file>
+            <s:file name="file" label="文件4"></s:file>
+            <s:submit label="上传"/>
+   </s:form>    
+   
+   <input size="16" type="text" value="2012-06-15" readonly class="form_datetime">
+   <script type="text/javascript">
+    $(".form_datetime").datetimepicker({
+    
+    format: 'yyyy-mm-dd',
+    autoclose :true,
+	todayBtn :true,
+	minView :2,
+	weekStart :1,
+	linked :true
+    });
+	</script>    
   </body>
 </html>

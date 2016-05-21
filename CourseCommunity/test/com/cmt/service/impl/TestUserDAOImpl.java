@@ -1,12 +1,24 @@
 package com.cmt.service.impl;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.sql.Blob;
+
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.junit.Assert;
 import org.junit.Test;
 
 
 
+
+
+
+import com.cmt.factory.HibernateSessionFactory;
 import com.cmt.pojo.User;
 import com.cmt.service.UserDAO;
+
 
 public class TestUserDAOImpl {
 	
@@ -76,10 +88,48 @@ public class TestUserDAOImpl {
 	// 测试更新密码
 	@Test
 	public void testUpdatePassword(){
+		User user1 =  new User();
 		String username = "chinn";
+		user1.setUsername(username);
 		UserDAO udao = new UserDAOImpl();
 		User user = udao.getUserByUsername(username);
-		udao.updatePassword(username, "zzz");
+		udao.updatePassword(user1, "zzz");
+	}
+	
+	@Test
+	public void testEditUserinfo(){
+
+		UserDAO udao = new UserDAOImpl();
+		User user = new User();
+		user.setUsername("test3");
+		Blob p =null;
+		try {
+			InputStream is = new FileInputStream("d:/pic/head5.jpg");
+			//p = (Blob) Hibernate.createBlob(is);
+			user.setAvatar(p);
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Transaction transaction = null;
+		try{
+			
+			Session session = HibernateSessionFactory.getSession();
+			transaction = session.beginTransaction();
+			session.save(user);
+			transaction.commit();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			
+			if(transaction!=null)
+				transaction = null;
+		}
+		
+		
 	}
 	
 }

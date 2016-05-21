@@ -24,7 +24,7 @@
             <property name="mobilephone" type="java.lang.String"/>
             <property name="company" type="java.lang.String"/>
             <property name="occupation" type="java.lang.String"/>
-            <property name="avatar" type="blob"/>
+            <property name="avatar" type="java.sql.Blob" />
             <property name="introduction" type="java.lang.String"/>
            	<property name="display" type="java.lang.String" >
            		<column name="display" length="12" default="000000000000"></column>

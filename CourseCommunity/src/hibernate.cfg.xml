@@ -10,7 +10,9 @@
 			org.hibernate.dialect.MySQLDialect
 		</property>
 		<property name="connection.url">
-			jdbc:mysql://localhost:3306/coursecommunity
+			<![CDATA[
+			jdbc:mysql://localhost:3306/coursecommunity?useUnicode=true&characterEncoding=utf8
+			]]>
 		</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password">root</property>
