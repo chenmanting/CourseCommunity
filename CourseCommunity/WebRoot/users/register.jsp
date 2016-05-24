@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<hr>
   	<div class="row">
   	<div class="col-xs-6 col-md-offset-3">
-	<form class="form-horizontal" role="form" id="myForm"  action="<%=basePath%>users/User_registe.action" method=post>
+	<form class="form-horizontal" role="form" id="myForm"  action="users/registe.action" method=post>
    		<div class="form-group" >
       		<label for="username" class="col-sm-2 control-label">用户名</label>
 	      	<div class="col-sm-10">
@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$("#usernameStatus").css("color","red");
 				return false;
 			}
-			var url = "<%=basePath%>users/User_checkUsername.action";
+			var url = "<%=basePath%>users/checkUsername.action";
 
 			$.ajax({
 				type:'POST',
@@ -136,7 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			var password = $("#password").val();
 			var password1 = $("#password1").val();
 			var $form = $("#myForm");
-   			var url = "<%=basePath%>users/User_checkUsername.action";
+   			var url = "<%=basePath%>users/checkUsername.action";
    			
 			if(username == undefined || username == "" || username == null){
 				$("#usernameStatus").text("请输入用户名");
@@ -221,7 +221,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				return false;
 			}
 	
-			var url = "<%=basePath%>users/User_checkUsername.action";
+			var url = "<%=basePath%>users/checkUsername.action";
 			//alert($("#username").val());
 			var ajaxFlag = false;
 			$.ajax({

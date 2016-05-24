@@ -1,6 +1,7 @@
 package com.cmt.pojo;
 
 import java.sql.Blob;
+import java.util.*;
 
 
 
@@ -21,9 +22,10 @@ public class User {
 	private String mobilephone;
 	private String company;
 	private String occupation;
-	private Blob avatar;
+	private String avatar;
 	private String introduction;
 	private String display;//属性是否公开
+	 private Set<Course> courses = new HashSet<Course>();
 	
 	public User() {
 		super();
@@ -149,11 +151,11 @@ public class User {
 		this.occupation = occupation;
 	}
 
-	public Blob getAvatar() {
+	public String getAvatar() {
 		return avatar;
 	}
 
-	public void setAvatar(Blob avatar) {
+	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
 
@@ -171,6 +173,14 @@ public class User {
 
 	public void setDisplay(String display) {
 		this.display = display;
+	}
+
+	public Set<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(Set<Course> courses) {
+		this.courses = courses;
 	}
 
 	@Override

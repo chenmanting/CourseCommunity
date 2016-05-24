@@ -31,8 +31,7 @@
 		</property>
 		
 		<mapping resource="com/cmt/pojo/Users.hbm.xml"/>
-		<mapping resource="com/cmt/pojo/CourseInfos.hbm.xml"/>
-		<mapping resource="com/cmt/pojo/CourseMembers.hbm.xml"/>
+		<mapping resource="com/cmt/pojo/Course.hbm.xml"/>
 
 	</session-factory>
 

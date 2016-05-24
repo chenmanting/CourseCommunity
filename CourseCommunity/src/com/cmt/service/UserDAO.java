@@ -13,11 +13,13 @@ public interface UserDAO {
 	public boolean checkUsername(String username);
 	//根据用户名获取用户
 	public User getUserByUsername(String username);
-	//修改密码
+	//编辑密码
 	public boolean updatePassword(User user,String password);
-	//修改用户信息
+	//编辑用户信息
 	public boolean updateUserinfo(String username, User newUserinfo);
-	//修改头像
-	public boolean updateAvatar(String username, Blob avatar);
+	//编辑头像
+	public boolean updateAvatar(String username, String avatar);
+	//更新用户
+	public boolean updateUser(User user);
 	
 }

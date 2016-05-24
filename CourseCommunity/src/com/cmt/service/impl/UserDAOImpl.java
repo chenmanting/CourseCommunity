@@ -68,6 +68,7 @@ public class UserDAOImpl implements UserDAO {
 			transaction.commit();
 			
 		}catch(Exception ex){
+			transaction.rollback();
 			ex.printStackTrace();
 			return false;
 		}finally{
@@ -145,6 +146,7 @@ public class UserDAOImpl implements UserDAO {
 			return false;
 			
 		}catch(Exception ex){
+			transaction.rollback();
 			ex.printStackTrace();
 			return false;
 		}finally{
@@ -201,6 +203,7 @@ public class UserDAOImpl implements UserDAO {
 			transaction.commit();
 			
 		}catch(Exception e){
+			transaction.rollback();
 			e.printStackTrace();
 			return false;
 		}finally{
@@ -213,7 +216,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean updateAvatar(String username, Blob avatar) {
+	public boolean updateAvatar(String username, String avatar) {
 
 		Transaction transaction = null;
 		
@@ -236,6 +239,24 @@ public class UserDAOImpl implements UserDAO {
 			}
 		}
 		return true;
+	}
+
+	@Override
+	public boolean updateUser(User user) {
+		
+		Transaction transaction = null;
+		try{
+			Session session = HibernateSessionFactory.getSession();
+			transaction = session.beginTransaction();
+			session.update(user);
+			
+		}catch(Exception e){
+			
+			e.printStackTrace();
+			
+		}
+		
+		return false;
 	}
 	
 	

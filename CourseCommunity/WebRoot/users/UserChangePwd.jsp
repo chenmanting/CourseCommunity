@@ -9,6 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <title>密码修改</title>
 <base target="_self" />
+<base href="<%=basePath%>">
 <link rel="stylesheet" type="text/css" href="css/personalstyle.css">
 <script language="javascript" src="js/Default.js"></script>
 <script language="javascript">
@@ -97,7 +98,7 @@ document.onkeydown = function EnterToTab() {
 			alert("俩次密码输入不一致");
 			return false;
 		}
-		var url = "<%=path%>/users/User_updatePassword.action";
+		var url = "<%=path%>/users/updatePassword.action";
 		$.ajax({
 			url: url,
 			data:{

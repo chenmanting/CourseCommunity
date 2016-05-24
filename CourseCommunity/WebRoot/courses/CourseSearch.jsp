@@ -1,7 +1,14 @@
-﻿
+﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
 <title>课程搜索</title>
+<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/personalstyle.css" rel="stylesheet" type="text/css">
 <script src="js/common.js"></script>
@@ -173,39 +180,46 @@ function goadmin(ss)
           <td align="center"> 学生人数</td>
           <td align="center"> 操作</td>
         </tr>
-		<tr align='center'>
-            <td class='line2'>1</td>
-            <td class='line2'><a href="CourseInfo.htm">Java程序设计</a></td>
-            <td class='line2'>编程基础</td>
-            <td class='line2'>信息与计算科学系</td>
-            <td class='line2'><a href="Teacher.htm?ID=10008100">刘启玉</a></td>
-            <td class='line2'>2009年02月</td>
-            <td class='line2'>0</td>
-            <td class='line2'><a href="CourseAdd">加入</a></td>
-        </tr>
-        <tr align='center'>
-            <td class='line2'>2</td>
-            <td class='line2'><a href="CourseInfo.htm">数据结构</a></td>
-            <td class='line2'>软件基础</td>
-            <td class='line2'>信息与计算科学系</td>
-            <td class='line2'><a href='Teacher.htm?ID=10008100' target='_blank;'>卢焕达</a></td>
-            <td class='line2'>2009年02月</td>
-            <td class='line2'>0</td>
-            <td class='line2'><a href=UIInfoCourse.asp?ID=1000810001>退出</a></td>
-        </tr>
-        <tr align='center'>
-            <td class='line2'>3</td>
-            <td class='line2'><a href="CourseInfo.htm">数学物理方程</a></td>
-            <td class='line2'>数学理论</td>
-            <td class='line2'>信息与计算科学系</td>
-            <td class='line2'><a href="Teacher.htm?ID=10008100">于欣</a></td>
-            <td class='line2'>2009年02月</td>
-            <td class='line2'>0</td>
-            <td class='line2'><a href=UIInfoCourse.asp?ID=1000810001>加入</a></td>
-        </tr>
+        <s:iterator value="#session.allCourses" id="c">
+        	<s:if test="%{#c.tid!=#session.user.uid}">
+        	<tr align='center'>
+            	<td class='line2'><s:property value="#c.cid" /></td>
+            	<td class='line2'><s:property value="#c.title" /></td>
+            	<td class='line2'><s:property value="#c.classType" /></td>
+            	<td class='line2'><s:property value="#c.college" /></td>
+            	<td class='line2'><s:property value="#c.teacher" /></td>
+            	<td class='line2'><s:property value="#c.beginTime" /></td>
+            	<td class='line2'><s:property value="#c.studentNumber" /></td>
+            	<td class='line2'><button id=add onclick="add('<s:property value="#c.cid" />');">加入</button>
+            	</td>
+        	</tr>
+        	</s:if>
+        </s:iterator>
       </table>
 	  </td>
   </tr>
 </table>
 </body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	 function add(joinCourseId){
+    		if(confirm("确认加入？")){
+    			var path="<%=basePath%>courses/joinCourse.action";
+				alert(path);
+				alert(joinCourseId);
+    			$.ajax({
+    				type:"post",
+    				url:path,
+    				data:{joinCourseId:joinCourseId},
+    				success:function(result){
+    					alert(result);
+    					location.reload() 
+    				},
+    				error:function(result){
+    					alert(result);
+    				}
+    			});
+    		}
+    	}
+</script>
 </html>

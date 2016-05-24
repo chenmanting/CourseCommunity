@@ -1,9 +1,14 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML><HEAD><TITLE>ABC网络教室</TITLE>
 <META http-equiv=Content-Type content="text/html; charset=UTF-8">
+<base href=" <%=basePath%>"> 
 <LINK href="css/personalstyle.css" type=text/css rel=stylesheet>
 <SCRIPT src="js/common.js"></SCRIPT>
-
 <SCRIPT language=JavaScript>
 var focusok=false;
 if (navigator.appName == "Netscape") {
@@ -95,7 +100,6 @@ function Open(table)
 	}
 }
 </SCRIPT>
-
 <META content="MSHTML 6.00.2900.5764" name=GENERATOR></HEAD>
 <BODY>
 <FORM name=form1 action=Left.asp method=post target=chat align="center">
@@ -116,10 +120,10 @@ align=center border=0>
         <TBODY>
         <TR>
           <TD class=fff align=middle background=images/per_case2.gif><A 
-            href="CourseAdd.htm" 
+            href="courses/CourseAdd.jsp" 
             target=Main><IMG height=9 src="images/per_ico4.gif" width=9 
             border=0><B> 开课</B></A> <A 
-            href="CourseSearch.htm" target=Main><IMG 
+            href="courses/getAllCourses.action" target=Main><IMG 
             height=9 src="images/per_ico4.gif" width=9 border=0> 
             <B>选课</B></A></TD></TR></TBODY></TABLE>
       <TABLE style="MARGIN-TOP: 5px; MARGIN-BOTTOM: 5px" height=33 cellSpacing=0 
@@ -127,7 +131,7 @@ align=center border=0>
         <TBODY>
         <TR>
           <TD align=middle background=images/per_case.gif>
-            <DIV class=Tabon id=tag1><a href="MyCourse.htm" target="Main" >&nbsp;我的课程</A>
+            <DIV class=Tabon id=tag1><a href="courses/getMyCourses.action" target="Main" >&nbsp;我的课程</A>
             </DIV></TD></TR></TBODY></TABLE>
       <TABLE id=Content1 style="DISPLAY: none" cellSpacing=6 cellPadding=0 
       border=0>
@@ -139,8 +143,8 @@ align=center border=0>
         <TBODY>
         <TR>
           <TD align=middle background=images/per_case.gif>
-            <DIV class=Tabon id=tag2><A onclick=turnit(Content2,tag2)   
-            href="UserList.htm" 
+            <DIV class=Tabon id=tag2><A 
+            href="courses/UserList.htm" 
             target=Main>&nbsp;课程成员</A></DIV></TD></TR></TBODY></TABLE>
       <TABLE style="MARGIN-TOP: 5px; MARGIN-BOTTOM: 5px" height=33 cellSpacing=0 
       cellPadding=0 width=159 border=0>
@@ -155,17 +159,17 @@ align=center border=0>
         <TR>
           <TD class=content><IMG src="images/per_ico3.gif" 
             align=absMiddle><A 
-            href="UserChangePwd.jsp" 
+            href="users/UserChangePwd.jsp" 
             target=Main>密码变更</A></TD></TR>
         <TR>
           <TD class=content><IMG src="images/per_ico3.gif" 
             align=absMiddle><A 
-            href="UserEdit.jsp" 
+            href="users/UserEdit.jsp" 
             target=Main>信息修改</A></TD></TR>
         <TR>
           <TD class=content><IMG src="images/per_ico3.gif" 
             align=absMiddle><A 
-            href="UserAvatarChange.jsp" 
+            href="users/UserAvatarChange.jsp" 
             target=Main>更换头像</A></TD></TR>
         </TBODY></TABLE>
       <TABLE style="MARGIN-TOP: 5px; MARGIN-BOTTOM: 5px" height=33 cellSpacing=0 

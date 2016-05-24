@@ -1,7 +1,12 @@
-﻿
+﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <html>
 <head>
 <title>课程搜索</title>
+<base href="<%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href="css/personalstyle.css" rel="stylesheet" type="text/css">
 <script src="js/common.js"></script>

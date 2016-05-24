@@ -24,11 +24,15 @@
             <property name="mobilephone" type="java.lang.String"/>
             <property name="company" type="java.lang.String"/>
             <property name="occupation" type="java.lang.String"/>
-            <property name="avatar" type="java.sql.Blob" />
+            <property name="avatar" type="java.lang.String" />
             <property name="introduction" type="java.lang.String"/>
            	<property name="display" type="java.lang.String" >
            		<column name="display" length="12" default="000000000000"></column>
            	</property>
+           	<set name="courses" lazy="false" cascade="all" inverse="true">
+             	<key column="uid"></key>
+             	<one-to-many class="com.cmt.pojo.Course"/>
+         	</set>
            	
     </class>
 </hibernate-mapping>

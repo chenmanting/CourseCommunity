@@ -9,6 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <HTML>
 <HEAD><TITLE>个人信息</TITLE>
 <META http-equiv=Content-Type content="text/html; charset=utf-8">
+<base href=" <%=basePath%>"> 
 <SCRIPT language=javascript src="js/Default.js"></SCRIPT>
 
 <LINK href="css/personalstyle.css" type=text/css rel=stylesheet>
@@ -16,12 +17,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <s:head theme="xhtml"/>  
 <sx:head parseContent="true"/>   
 
-<link href="<%=path %>/css/bootstrap.min.css" rel="stylesheet" media="screen">
-<link rel="stylesheet" type="text/css" href="<%=path %>/css/bootstrap-datetimepicker.min.css"/ >
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/ >
 
 </HEAD>
 <BODY>
-<FORM id=form1 name=form1 action="<%=path%>/users/User_editUserinfo.action" method=post encType=multipart/form-data>
+<FORM id=form1 name=form1 action="users/editUserinfo.action" method=post encType=multipart/form-data>
 <TABLE class=case height="100%" cellSpacing=0 cellPadding=0 width="98%" align=center border=0>
   <TBODY>
   <TR>
@@ -177,7 +178,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </FORM>
 </BODY>
 <script type="text/javascript" src="js/jquery.js"></script>
-<script src="<%=path %>/js/bootstrap-datetimepicker.min.js"></script>	
+<script src="js/bootstrap-datetimepicker.min.js"></script>	
 <script type="text/javascript">
 	// 日历选择器
 	$(".form_datetime").datetimepicker({

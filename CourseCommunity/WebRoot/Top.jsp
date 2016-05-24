@@ -7,6 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <HTML>
 <HEAD><TITLE>信计课程社区</TITLE>
 <META http-equiv=Content-Type content="text/html; charset=GBK">
+<base href=" <%=basePath%>"> 
 <LINK href="css/style.css" type=text/css rel=stylesheet>
 <SCRIPT src="js/common.js"></SCRIPT>
 <SCRIPT src="js/Top.js"></SCRIPT>
@@ -38,20 +39,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <TBODY>
                     <TR>
                       <TD width=50><A 
-                        href="javascript:window.parent.location.href='<%=path%>/index.jsp'"><IMG 
+                        href="javascript:window.parent.location.href='index.jsp'"><IMG 
                         height=11 src="images/per_home.gif" width=38 
                         border=0></A></TD>
-                      <TD><A target="_parent" href="<%=path%>/users/User_logout.action?username=cmt"><IMG 
+                      <TD><A target="_parent" href="users/logout.action"><IMG 
                         height=11 src="images/per_quit.gif" width=37 
                         border=0></A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
         <TR>
           <TD>&nbsp;</TD>
           <TD height=30><B>${user.name }
               <LABEL id=time>时间</LABEL></B></TD>
-          <TD><A href="/MessageList.aspx" target=Main>
+          <!-- 
+          <TD><A href="message/MessageList.aspx" target=Main>
             <IFRAME id=message style="OVERFLOW: hidden; BACKGROUND-COLOR: transparent" align=middle 
                 src="#" frameBorder=0 width=110 height=19 allowTransparency scrolling="no">
-            </IFRAME></A></TD>
+            </IFRAME></A></TD> -->
         </TR>
         </TBODY>
       </TABLE>

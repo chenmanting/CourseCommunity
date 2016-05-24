@@ -7,14 +7,13 @@
 	<package name="default" namespace="/" extends="struts-default"/>
 	
 	<package name="users" namespace="/users" extends="default">
-		<action name="*_*" class="com.cmt.action.{1}Action" method="{2}">
-			<result name="success"  type="redirect">/users/main.jsp</result>
-			<result name="login_success"  type="redirect">/users/main.jsp</result>
-			<result name="login_failure">/users/login.jsp</result>
-			<result name="registe_success"  type="redirect">/users/main.jsp</result>
+		<action name="*" class="com.cmt.action.UserAction" method="{1}">
+			<result name="success"  type="redirect">/main.jsp</result>
+			<result name="login_success"  type="redirect">/main.jsp</result>
+			<result name="login_failure">/users/loginfailure.jsp</result>
+			<result name="logout">/users/logout.jsp</result>
+			<result name="registe_success"  type="redirect">/main.jsp</result>
 			<result name="registe_failure">/users/register.jsp</result>
-			<result name="editSuccess">/users/editsuccess.jsp</result>
-			<result name="editFailure">/users/editfailure.jsp</result>
 			<result name ="updateAvatarSuccess">/users/updateAvatarSuccess.jsp</result>
 			<result name="input">/error.jsp</result>
 			<!-- 配置拦截器 限制上传文件类型及大小 -->
@@ -33,6 +32,15 @@
 				<param name="maximumSize">2M</param>
 			</interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+	</package>
+	
+	<package name="courses" namespace="/courses" extends="default">
+		<action name="*" class="com.cmt.action.CourseAction" method="{1}">
+			<result name="success">/courses/MyCourse.jsp</result>
+			<result name="gotoMyCourse">/courses/MyCourse.jsp</result>
+			<result name="gotoCourseRearch">/courses/CourseSearch.jsp</result>
+			<result name="editCourse" type="redirect">/courses/CourseEdit.jsp</result>
 		</action>
 	</package>
 

@@ -32,7 +32,7 @@ public class TestUserDAOImpl {
 		
 		UserDAO udao  =  new UserDAOImpl();
 		
-		//udao.addUser(user);
+		udao.addUser(user);
 		
 		//Assert.assertEquals(true,udao.addUser(user));
 		
@@ -102,9 +102,9 @@ public class TestUserDAOImpl {
 		UserDAO udao = new UserDAOImpl();
 		User user = new User();
 		user.setUsername("test3");
-		Blob p =null;
+		
 		try {
-			InputStream is = new FileInputStream("d:/pic/head5.jpg");
+			String p="d:/pic/head5.jpg";
 			//p = (Blob) Hibernate.createBlob(is);
 			user.setAvatar(p);
 			
