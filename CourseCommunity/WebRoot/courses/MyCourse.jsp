@@ -36,9 +36,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <td width="12%" align="center"> 学生人数</td>
           <td width="8%" align="center"> 操作</td>
         </tr>
-        <s:iterator value="#session.myCourses" id="c">
+        <s:iterator value="#session.myCourses" id="c" status="index">
         	<tr align='center'>
-            	<td class='line2'><s:property value="#c.cid" /></td>
+            	<td class='line2'><s:property value="#index.index"/></td>
             	<td class='line2'><s:property value="#c.title" /></td>
             	<td class='line2'><s:property value="#c.classType" /></td>
             	<td class='line2'><s:property value="#c.college" /></td>
@@ -46,10 +46,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             	<td class='line2'><s:property value="#c.beginTime" /></td>
             	<td class='line2'><s:property value="#c.studentNumber" /></td>
             	<td class='line2'>
-            		<s:if test="#c.tid == #session.user.uid"></s:if>
+            		<s:if test="#c.tid == #session.user.uid">
             			<button id=edit onclick="window.location.href='<%=basePath%>courses/getEditCourse.action?id=<s:property value="#c.cid" />'">编辑</button>
             			<button id=del onclick="del('<s:property value="#c.cid" />')" >删除</button>
-            		<s:else><button>退出</button></s:else>
+            		</s:if>
+            		<s:else><button id=quit onclick="quit('<s:property value="#c.cid" />')">退出</button></s:else>
             	</td>
         	</tr>
         </s:iterator>
@@ -69,6 +70,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     				type:"post",
     				url:path,
     				data:{delCid:id},
+    				success:function(result){
+    					alert(result);
+    					location.reload() 
+    				},
+    				error:function(result){
+    					alert(result);
+    				}
+    			});
+    		}
+	}
+	function quit(id){
+		//alert(id);
+		if(confirm("确认退出？")){
+    			var path="<%=basePath%>courses/quitCourse.action";
+				//alert(path);
+    			$.ajax({
+    				type:"post",
+    				url:path,
+    				data:{quitCid:id},
     				success:function(result){
     					alert(result);
     					location.reload() 

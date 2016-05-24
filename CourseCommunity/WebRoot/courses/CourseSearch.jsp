@@ -180,10 +180,10 @@ function goadmin(ss)
           <td align="center"> 学生人数</td>
           <td align="center"> 操作</td>
         </tr>
-        <s:iterator value="#session.allCourses" id="c">
+        <s:iterator value="#session.allCourses" id="c" status="index">
         	<s:if test="%{#c.tid!=#session.user.uid}">
         	<tr align='center'>
-            	<td class='line2'><s:property value="#c.cid" /></td>
+            	<td class='line2'><s:property value="#index.index"/></td>
             	<td class='line2'><s:property value="#c.title" /></td>
             	<td class='line2'><s:property value="#c.classType" /></td>
             	<td class='line2'><s:property value="#c.college" /></td>
@@ -205,8 +205,8 @@ function goadmin(ss)
 	 function add(joinCourseId){
     		if(confirm("确认加入？")){
     			var path="<%=basePath%>courses/joinCourse.action";
-				alert(path);
-				alert(joinCourseId);
+				//alert(path);
+				//alert(joinCourseId);
     			$.ajax({
     				type:"post",
     				url:path,

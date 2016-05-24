@@ -144,7 +144,7 @@ align=center border=0>
         <TR>
           <TD align=middle background=images/per_case.gif>
             <DIV class=Tabon id=tag2><A 
-            href="courses/UserList.htm" 
+            href="users/getMyStudents.action" 
             target=Main>&nbsp;课程成员</A></DIV></TD></TR></TBODY></TABLE>
       <TABLE style="MARGIN-TOP: 5px; MARGIN-BOTTOM: 5px" height=33 cellSpacing=0 
       cellPadding=0 width=159 border=0>

@@ -233,7 +233,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 		updateSessionUser(loginUser.getUsername());
 		return "updateAvatarSuccess";
 	}
-	
+	//获取头像
 	public void getAvatar() throws IOException{
 		response.setContentType("image/jpeg");
 		user = (User) session.getAttribute("user");
@@ -252,6 +252,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 		out.close();
 	}
 	
+	//获取验证码
 	public void getCheckCode() throws IOException{
 		
 		response.setContentType("image/jpeg");

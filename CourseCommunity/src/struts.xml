@@ -23,16 +23,6 @@
 			</interceptor-ref>
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
-		<action name="upload" class="com.cmt.action.FileAction" method="updateAvatar">
-			<result>/users/UserAvatarChange.jsp</result>
-			<result name="input">/error.jsp</result>
-			<!-- 配置拦截器 限制上传文件类型及大小 -->
-			<interceptor-ref name="fileUpload">
-				<param name="allowedTypes">image/bmp,image/x-png,image/gif,image/jpeg</param>
-				<param name="maximumSize">2M</param>
-			</interceptor-ref>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
-		</action>
 	</package>
 	
 	<package name="courses" namespace="/courses" extends="default">
@@ -40,7 +30,8 @@
 			<result name="success">/courses/MyCourse.jsp</result>
 			<result name="gotoMyCourse">/courses/MyCourse.jsp</result>
 			<result name="gotoCourseRearch">/courses/CourseSearch.jsp</result>
-			<result name="editCourse" type="redirect">/courses/CourseEdit.jsp</result>
+			<result name="gotoEditCourse" type="redirect">/courses/CourseEdit.jsp</result>
+			<result name="gotoUserList">/courses/UserList.jsp</result>
 		</action>
 	</package>
 
