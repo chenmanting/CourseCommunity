@@ -25,7 +25,7 @@ public class User {
 	private String avatar;
 	private String introduction;
 	private String display;//属性是否公开
-	 private Set<Course> courses = new HashSet<Course>();
+	private Set<Course> courses = new HashSet<Course>();
 	
 	public User() {
 		super();

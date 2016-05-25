@@ -15,9 +15,10 @@ import org.junit.Test;
 
 
 
-import com.cmt.factory.HibernateSessionFactory;
+
 import com.cmt.pojo.User;
 import com.cmt.service.UserDAO;
+import com.cmt.util.HibernateSessionFactory;
 
 
 public class TestUserDAOImpl {

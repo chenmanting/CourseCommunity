@@ -1,6 +1,7 @@
 package com.cmt.service;
 
 import java.sql.Blob;
+import java.util.*;
 
 import com.cmt.pojo.User;
 
@@ -13,6 +14,8 @@ public interface UserDAO {
 	public boolean checkUsername(String username);
 	//根据用户名获取用户
 	public User getUserByUsername(String username);
+	//根据uid获取user
+	public User getUser(int uid);
 	//编辑密码
 	public boolean updatePassword(User user,String password);
 	//编辑用户信息

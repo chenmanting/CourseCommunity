@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.sql.Blob;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -21,11 +22,13 @@ import org.hibernate.Session;
 
 import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 
-import com.cmt.factory.HibernateSessionFactory;
 import com.cmt.pojo.Course;
 import com.cmt.pojo.User;
 import com.cmt.service.UserDAO;
+import com.cmt.service.impl.CourseDAOImpl;
 import com.cmt.service.impl.UserDAOImpl;
+import com.cmt.util.HibernateSessionFactory;
+import com.cmt.util.UserPageUtil;
 import com.opensymphony.xwork2.ModelDriven;
 import com.sun.prism.paint.Gradient;
 
@@ -45,6 +48,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 	
 	private String check;//用户信息显示
 	private String verify;//用户输入验证码
+	private String cid;
 	
 	private File upload;
 	private String uploadContentType;
@@ -72,10 +76,11 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 					+" login failed ：验证码输入错误");
 			return "login_failure";
 		}
-		
+		user.setUsername(user.getUsername().trim());
+		user.setPassword(user.getPassword().trim());
 		if(udao.userLogin(user)){
 			user = udao.getUserByUsername(user.getUsername());
-			Set<Course>myCourses =user.getCourses();
+			List<Course>myCourses =new CourseDAOImpl().queryMyCourses(user.getUid());
 			session.setAttribute("myCourses", myCourses);
 			session.setAttribute("user", user);
 			logger.info("User "+ user.getUsername()
@@ -279,16 +284,19 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 		os.close();
 	}
 	
-	// 注销
-	public String logout() throws IOException{
+	
+	
+	public void getUserPages(){
 		
-		System.out.println("logout is invoke~");
-		
-		session.setAttribute("user", null);
-		
-		return "logout";
 	}
 	
+	// 注销
+	public String logout() throws IOException{
+		System.out.println("logout is invoke~");
+		session.invalidate();
+		return "logout";
+	}
+	//更新用户在session中的状态
 	private void updateSessionUser(String username){
 		user = udao.getUserByUsername(username);
 		session.setAttribute("user", user);
@@ -329,6 +337,14 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 
 	public void setVerify(String verify) {
 		this.verify = verify;
+	}
+
+	public String getCid() {
+		return cid;
+	}
+
+	public void setCid(String cid) {
+		this.cid = cid;
 	}
 
 	public File getUpload() {

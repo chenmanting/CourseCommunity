@@ -10,12 +10,13 @@
 		<action name="*" class="com.cmt.action.UserAction" method="{1}">
 			<result name="success"  type="redirect">/main.jsp</result>
 			<result name="login_success"  type="redirect">/main.jsp</result>
-			<result name="login_failure">/users/loginfailure.jsp</result>
-			<result name="logout">/users/logout.jsp</result>
+			<result name="login_failure"  type="redirect">/users/loginfailure.jsp</result>
+			<result name="logout"  type="redirect">/users/logout.jsp</result>
 			<result name="registe_success"  type="redirect">/main.jsp</result>
-			<result name="registe_failure">/users/register.jsp</result>
-			<result name ="updateAvatarSuccess">/users/updateAvatarSuccess.jsp</result>
-			<result name="input">/error.jsp</result>
+			<result name="registe_failure"  type="redirect">/users/register.jsp</result>
+			<result name ="updateAvatarSuccess"  type="redirect">/users/updateAvatarSuccess.jsp</result>
+			<result name="input"  type="redirect">/error.jsp</result>
+			<result name="gotoUserList"  type="redirect">/courses/UserList.jsp</result>
 			<!-- 配置拦截器 限制上传文件类型及大小 -->
 			<interceptor-ref name="fileUpload">
 				<param name="allowedTypes">image/bmp,image/x-png,image/gif,image/jpeg</param>
@@ -24,14 +25,19 @@
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
 	</package>
+	<package name="upages" namespace="/upages" extends="default">
+		<action name="*" class="com.cmt.action.UserPageAction" method="{1}">
+			<result name="gotoUserList"  type="redirect">/courses/UserList.jsp</result>
+		</action>
+	</package>
 	
 	<package name="courses" namespace="/courses" extends="default">
 		<action name="*" class="com.cmt.action.CourseAction" method="{1}">
-			<result name="success">/courses/MyCourse.jsp</result>
-			<result name="gotoMyCourse">/courses/MyCourse.jsp</result>
-			<result name="gotoCourseRearch">/courses/CourseSearch.jsp</result>
+			<result name="success"  type="redirect">/courses/MyCourse.jsp</result>
+			<result name="gotoMyCourse"  type="redirect">/courses/MyCourse.jsp</result>
+			<result name="gotoCourseRearch"  type="redirect">/courses/CourseSearch.jsp</result>
 			<result name="gotoEditCourse" type="redirect">/courses/CourseEdit.jsp</result>
-			<result name="gotoUserList">/courses/UserList.jsp</result>
+			<result name="gotoUserListIndex" type="redirect">/courses/UserListIndex.jsp</result>
 		</action>
 	</package>
 

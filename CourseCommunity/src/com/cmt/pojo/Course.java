@@ -11,7 +11,7 @@ import java.sql.Date;
 public class Course {
 
 	private int cid;// 课程id
-	private String code;//课程编号
+	private String code;//课程编号, role为学生时为加入课程的cid
 	private String title;
 	private String classType;//课程类型
 	private String college;//开课部门

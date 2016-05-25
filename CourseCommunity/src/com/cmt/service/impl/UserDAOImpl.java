@@ -3,6 +3,7 @@ package com.cmt.service.impl;
 
 import java.sql.Blob;
 import java.util.List;
+import java.util.Set;
 
 import javax.swing.text.html.StyleSheet.ListPainter;
 
@@ -10,9 +11,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.cmt.factory.HibernateSessionFactory;
 import com.cmt.pojo.User;
 import com.cmt.service.UserDAO;
+import com.cmt.util.HibernateSessionFactory;
 
 public class UserDAOImpl implements UserDAO {
 
@@ -258,7 +259,14 @@ public class UserDAOImpl implements UserDAO {
 		
 		return false;
 	}
-	
-	
+
+	@Override
+	public User getUser(int uid) {
+		String hql ="from User as u where u.uid=:uid";
+		Query query =HibernateSessionFactory.getSession().createQuery(hql);
+		query.setInteger("uid", uid);
+		User u = (User) query.list().get(0);
+		return u;
+	}
 
 }

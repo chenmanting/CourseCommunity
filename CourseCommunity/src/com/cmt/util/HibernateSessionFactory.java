@@ -1,4 +1,4 @@
-package com.cmt.factory;
+package com.cmt.util;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

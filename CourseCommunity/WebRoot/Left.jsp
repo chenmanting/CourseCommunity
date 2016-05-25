@@ -144,7 +144,7 @@ align=center border=0>
         <TR>
           <TD align=middle background=images/per_case.gif>
             <DIV class=Tabon id=tag2><A 
-            href="users/getMyStudents.action" 
+            href="courses/getMyTeachCourse.action" 
             target=Main>&nbsp;课程成员</A></DIV></TD></TR></TBODY></TABLE>
       <TABLE style="MARGIN-TOP: 5px; MARGIN-BOTTOM: 5px" height=33 cellSpacing=0 
       cellPadding=0 width=159 border=0>
@@ -184,10 +184,10 @@ align=center border=0>
         <TBODY>
         <TR>
           <TD class=content><IMG src="images/per_ico3.gif" 
-            align=absMiddle><A href="MessageList.htm" target=Main>我的消息</A></TD></TR>
+            align=absMiddle><A href="Message.jsp" target=Main>我的消息</A></TD></TR>
         <TR>
           <TD class=content><IMG src="images/per_ico3.gif" 
-            align=absMiddle><A href="MessageSend.htm" target=Main>发送消息</A></TD></TR></TBODY></TABLE>
+            align=absMiddle><A href="Message.jsp" target=Main>发送消息</A></TD></TR></TBODY></TABLE>
       <TABLE style="MARGIN-TOP: 5px; MARGIN-BOTTOM: 5px" height=33 cellSpacing=0 
       cellPadding=0 width=159 border=0>
         <TBODY>
@@ -202,15 +202,15 @@ align=center border=0>
         <TR>
           <TD class=content><IMG src="images/per_ico3.gif" 
             align=absMiddle><A 
-            href="TopicSearch.htm" 
+            href="Message.jsp" 
             target=Main>编程基础</A></TD></TR>
         <TR>
           <TD class=content><IMG src="images/per_ico3.gif" 
             align=absMiddle><A 
-            href="TopicSearch.htm" 
+            href="Message.jsp" 
             target=Main>软件技术</A></TD></TR>
         <TR>
           <TD class=content><IMG src="images/per_ico3.gif" 
             align=absMiddle><A 
-            href="TopicSearch.htm" 
+            href="Message.jsp" 
             target=Main>课程讨论</A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></BODY></HTML>

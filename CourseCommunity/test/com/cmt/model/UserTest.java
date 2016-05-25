@@ -13,9 +13,9 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.junit.Test;
 
-import com.cmt.factory.HibernateSessionFactory;
 import com.cmt.pojo.User;
 import com.cmt.service.impl.UserDAOImpl;
+import com.cmt.util.HibernateSessionFactory;
 
 
 public class UserTest {
