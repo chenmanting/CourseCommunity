@@ -4,7 +4,18 @@
 
 	<constant name="struts.custom.i18n.resources" value="app"></constant>
 
-	<package name="default" namespace="/" extends="struts-default"/>
+	<package name="default" namespace="/" extends="struts-default">
+		<interceptors>  
+            <interceptor name="loginedCheck" class="com.cmt.intercepter.LoginIntercepter"/>  
+            <interceptor-stack name="mystack">  
+                <interceptor-ref name="loginedCheck" />  
+                <interceptor-ref name="defaultStack" />  
+            </interceptor-stack>  
+        </interceptors>     
+		<global-results>
+			<result name="login" type="redirect">/users/login.jsp</result>
+		</global-results>
+	</package>
 	
 	<package name="users" namespace="/users" extends="default">
 		<action name="*" class="com.cmt.action.UserAction" method="{1}">
@@ -22,12 +33,13 @@
 				<param name="allowedTypes">image/bmp,image/x-png,image/gif,image/jpeg</param>
 				<param name="maximumSize">2M</param>
 			</interceptor-ref>
-			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="defaultStack" />  
 		</action>
 	</package>
 	<package name="upages" namespace="/upages" extends="default">
 		<action name="*" class="com.cmt.action.UserPageAction" method="{1}">
 			<result name="gotoUserList"  type="redirect">/courses/UserList.jsp</result>
+			<interceptor-ref name="mystack" />
 		</action>
 	</package>
 	
@@ -38,6 +50,7 @@
 			<result name="gotoCourseRearch"  type="redirect">/courses/CourseSearch.jsp</result>
 			<result name="gotoEditCourse" type="redirect">/courses/CourseEdit.jsp</result>
 			<result name="gotoUserListIndex" type="redirect">/courses/UserListIndex.jsp</result>
+			<interceptor-ref name="mystack" />
 		</action>
 	</package>
 
