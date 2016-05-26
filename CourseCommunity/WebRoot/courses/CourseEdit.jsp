@@ -141,7 +141,7 @@ if (!theForm) {
 		}
 		
 		var isCheck = "${editCourse.isCheck}";
-		alert(isCheck)
+		//alert(isCheck)
 		if(isCheck =="true"){
 			$("#rbtnAudit").attr("checked","checked");
 		}

@@ -107,9 +107,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	$.ajax({
     			type:"post",
     			url:path,
-    			data:{titleSreach:sName,
-    				  teacherSreach:sTeacher,
-    				  collegeSreach:sCollege},
+    			data:{title:sName,
+    				  teacher:sTeacher,
+    				  college:sCollege},
     			success:function(result){
     				alert(result);
     				location.reload() 

@@ -34,9 +34,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	private String joinCourseId;//选课cid
 	private String delCid;//删除课程的cid
 	private String quitCid;//退出课程的cid
-	private String titleSreach;//搜索课程的名字
-	private String teacherSreach;//搜索课程的教师
-	private String collegeSreach;//搜索课程的开课部门
+	
 	private String ruid;//教师移除学生的学生uid
 	private String rcid;//教师移除学生的课程cid
 	
@@ -46,26 +44,34 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		this.courseService = courseService;
 	}
 
-	//开课
+	/**
+	 * 处理开课请求
+	 */
 	public void addCourse(){
 		
 		System.out.println("课程标题： "+course.getTitle());
 		User user = (User) session.getAttribute("user");
-		
-		try {
-			String result =   courseService.addCourse(user, course);
+		String result="";
+		if(courseService.addCourse(user, course)){
+			result = "<h2>开课成功！</h2>";
+		}else{
+			result = "<h2>开课失败！</h2>";
+		}
+		try{
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out;
 			out = response.getWriter();
 			out.write(result);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
 	
-	//加入课程
+	/**
+	 * 处理选课请求
+	 * @throws IOException
+	 */
 	public void joinCourse() throws IOException{
 		
 		HttpServletResponse response = ServletActionContext.getResponse();
@@ -84,18 +90,24 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		out.write(result);
 		
 	}
-	//获取我的课程
+	/**
+	 * 获取我所有的开设以及加入课程
+	 * @return
+	 */
 	public String getMyCourses(){
 		System.out.println("获取我的课程...");
 		User user = (User) session.getAttribute("user");
-		List<Course> courses = courseService.queryMyCourses(user.getUid());
+		List<Course> courses = courseService.queryMyCourses(user);
 		session.setAttribute("myCourses", courses);
 		System.out.println("我有"+courses.size()+"门课");
 		System.out.println("user course: " +  user.getCourses().size());
 		
 		return "gotoMyCourse";
 	}
-	//获取所有的课程
+	/**
+	 * 获取所有开设的课程
+	 * @return
+	 */
 	public String getAllCourses(){
 		System.out.println("获取所有课程...");
 		List<Course> sCourses =courseService.queryAllCourses();
@@ -103,7 +115,11 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		//System.out.println("共找到" + allCourses.size()+"门课程");
 		return "gotoCourseRearch";
 	}
-	//设置要编辑的课程
+	
+	/**
+	 * 设置要编辑的课程
+	 * @return
+	 */
 	public String getEditCourse(){
 		int cid = Integer.parseInt(request.getParameter("id"));
 		System.out.println("edit cid:" + cid);
@@ -112,29 +128,53 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		session.setAttribute("editCourse", course);
 		return "gotoEditCourse";
 	}
-	//更新课程
+	
+	/**
+	 * 更新课程
+	 */
 	public void editCourse() throws IOException{
 		Course t =  (Course) session.getAttribute("editCourse");
 		System.out.println("更新课程id ： "+ t.getCid());
-		
-		String result=courseService.updateCourse(t.getCid(), course);
-		
+		String result="";
+		try{
+			Course eCourse = courseService.getCourse(t.getCid());
+			eCourse.setTitle(course.getTitle());
+			eCourse.setClassType(course.getClassType());
+			eCourse.setCollege(course.getCollege());
+			eCourse.setKeyword(course.getKeyword());
+			eCourse.setIsPublic(course.getIsPublic());
+			eCourse.setIsCheck(course.getIsCheck());
+			eCourse.setNotes(course.getNotes());
+			eCourse.setBriefIntro(course.getBriefIntro());
+			courseService.updateCourse(eCourse);
+			result = "<h2>更新成功！</h2>";
+		}catch(Exception e){
+			result = "<h2>更新失败！</h2>";
+			System.out.println("更新失败");
+		}
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out;
 		out = response.getWriter();
 		out.write(result);
 	}
-	//删除课程
+	
+	/**
+	 * 删除课程
+	 * @throws IOException
+	 */
 	public void deleteCourse() throws IOException{
 		String result="";
 		System.out.println("delcid :" + delCid);
-		if(courseService.deleteCourse(Integer.parseInt(delCid))){
+		Course course = courseService.getCourse(Integer.parseInt(delCid));
+		try{
+			courseService.deleteCourse(course);
 			User user = (User) session.getAttribute("user");
-			List<Course> courses = courseService.queryMyCourses(user.getUid());
+			List<Course> courses = courseService.queryMyCourses(user);
 			session.setAttribute("myCourses", courses);
 			result = "删除成功！";
-		}else{
+		}catch(Exception e){
 			result = "删除失败！";
+			e.printStackTrace();
 		}
 		
 		response.setContentType("text/html;charset=utf-8");
@@ -142,15 +182,19 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		out = response.getWriter();
 		out.write(result);
 	}
-	//退出课程
+	/**
+	 * 退出课程
+	 * @throws IOException
+	 */
 	public void quitCourse() throws IOException{
 		String result ="";
 		System.out.println("quitCid " + quitCid);
 		int qid = Integer.parseInt(quitCid);
-		if(courseService.quitCourse(qid)){
+		Course course = courseService.getCourse(qid);
+		if(courseService.quitCourse(course)){
 			result = "退课成功！";
 			User user = (User) session.getAttribute("user");
-			List<Course> courses = courseService.queryMyCourses(user.getUid());
+			List<Course> courses = courseService.queryMyCourses(user);
 			session.setAttribute("myCourses", courses);
 		}else{
 			result = "退课失败！";
@@ -161,11 +205,17 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		out.write(result);
 		
 	}
-	//根据课程名称， 授课教师，开课部门搜索课程
+	/**
+	 * 根据课程名称， 授课教师，开课部门搜索课程
+	 * @throws IOException
+	 */
 	public void searchCourse() throws IOException{
-		System.out.println("title " +titleSreach);
-		
-		List<Course> searchCourse = courseService.searchCourse(titleSreach, teacherSreach, collegeSreach);
+		System.out.println("title " +course.getTitle());
+		//Course c = new Course();
+//		c.setTitle(titleSreach);
+//		c.setTeacher(teacherSreach);
+//		c.setCollege(collegeSreach);
+		List<Course> searchCourse = courseService.searchCourse(course);
 		session.setAttribute("sCourses", searchCourse);
 		System.out.println("搜索到" + searchCourse.size()+"个课程");
 		response.setContentType("text/html;charset=utf-8");
@@ -174,23 +224,30 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		out.write("搜索成功！");
 	}
 	
-	//获取我开设的课程
+	/**
+	 * 获取我开设的课程
+	 * @return
+	 */
 	public String getMyTeachCourse(){
 		System.out.println("获取我开设的课程...");
 		User u = (User) session.getAttribute("user");
-		List<Course> myTeachCourse = courseService.queryMyTeachCourse(u.getUid());
+		List<Course> myTeachCourse = courseService.queryMyTeachCourse(u);
 		System.out.println("我共开设了" + myTeachCourse.size()+"门课");
 		session.setAttribute("myTeachCourse", myTeachCourse);
 		return "gotoUserListIndex";
 	}
-	//移除学生
+	/**
+	 * 移除学生
+	 * @throws IOException
+	 */
 	public void removeCourse() throws IOException{
 		String result ="";
 		
 		System.out.println("ruid : " + ruid +"  rcid: " + rcid);
-		if(courseService.removeCourse(Integer.parseInt(rcid), Integer.parseInt(ruid))){
+		if(courseService.removeCourse(rcid, Integer.parseInt(ruid))){
 			result = "移除成功！";
-			getCourseUsers(Integer.parseInt(rcid));
+			Course course = courseService.getCourse(Integer.parseInt(rcid));
+			getCourseUsers(course);
 		}else{
 			result = "移除失败！";
 		}
@@ -200,9 +257,9 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		out.write(result);
 	}
 	
-	public void getCourseUsers(int cid){
+	public void getCourseUsers(Course course){
 		List<User> stus =null;
-		stus = new CourseDAOImpl().queryStudents(cid);
+		stus = courseService.queryStudents(course);
 		System.out.println("有" +stus.size()+"个学生");
 		session.setAttribute("students", stus);
 	}
@@ -229,31 +286,6 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 
 	public void setQuitCid(String quitCid) {
 		this.quitCid = quitCid;
-	}
-	
-
-	public String getTitleSreach() {
-		return titleSreach;
-	}
-
-	public void setTitleSreach(String titleSreach) {
-		this.titleSreach = titleSreach;
-	}
-
-	public String getTeacherSreach() {
-		return teacherSreach;
-	}
-
-	public void setTeacherSreach(String teacherSreach) {
-		this.teacherSreach = teacherSreach;
-	}
-
-	public String getCollegeSreach() {
-		return collegeSreach;
-	}
-
-	public void setCollegeSreach(String collegeSreach) {
-		this.collegeSreach = collegeSreach;
 	}
 	
 	public String getRuid() {

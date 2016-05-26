@@ -46,11 +46,11 @@ public class CourseTest {
 		System.out.println("username: "+ u.getUsername());
 		course.setUser(u);
 		CourseDAO cdao =new CourseDAOImpl();
-		if(cdao.addCourse(course)){
-			System.out.println("添加成功");
-		}else{
-			System.out.println("添加失败！");
-			
-		}
+//		if(cdao.addCourse(course)){
+//			System.out.println("添加成功");
+//		}else{
+//			System.out.println("添加失败！");
+//			
+//		}
 	}
 }

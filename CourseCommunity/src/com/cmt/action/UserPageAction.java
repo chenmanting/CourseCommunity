@@ -5,19 +5,29 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import com.cmt.dao.impl.CourseDAOImpl;
+import com.cmt.pojo.Course;
 import com.cmt.pojo.User;
+import com.cmt.service.CourseService;
 import com.cmt.util.UserPageUtil;
 
 public class UserPageAction extends SuperAction{
 	private String cid;
 	private int pageNum;
 	private static final int pageSize = 5;
+	
+	private CourseService courseService;
+	
+	public void setCourseService(CourseService courseService) {
+		this.courseService = courseService;
+	}
+
 	//获取某门课程的学生
 	public String gotoUserList(){
 		System.out.println("接收到的cid为  "+ cid);
 		session.setAttribute("cid", cid);
 		List<User> stus =null;
-		stus = new CourseDAOImpl().queryStudents(Integer.parseInt(cid));
+		Course course = courseService.getCourse(Integer.parseInt(cid));
+		stus = courseService.queryStudents(course);
 		System.out.println("有" +stus.size()+"个学生");
 		if(stus.size()==0 || stus == null){
 			session.setAttribute("students", null);
@@ -42,7 +52,8 @@ public class UserPageAction extends SuperAction{
 		
 		String cid = (String) session.getAttribute("cid");
 		List<User> stus =null;
-		stus = new CourseDAOImpl().queryStudents(Integer.parseInt(cid));
+		Course course = courseService.getCourse(Integer.parseInt(cid));
+		stus = courseService.queryStudents(course);
 		System.out.println("有" +stus.size()+"个学生");
 		
 		

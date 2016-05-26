@@ -92,7 +92,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 		user.setPassword(user.getPassword().trim());
 		if(userService.userLogin(user)){
 			user = userService.getUserByUsername(user.getUsername());
-			List<Course>myCourses =courseService.queryMyCourses(user.getUid());
+			List<Course>myCourses =courseService.queryMyCourses(user);
 			session.setAttribute("myCourses", myCourses);
 			session.setAttribute("user", user);
 			logger.info("User "+ user.getUsername()
