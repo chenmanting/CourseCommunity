@@ -1,4 +1,4 @@
-package com.cmt.service;
+package com.cmt.dao;
 
 import java.util.*;
 
@@ -12,7 +12,7 @@ public interface CourseDAO {
 	public Course getCourse(int cid);//通过课程id获取课程
 	public boolean updateCourse(int cid, Course course);//更新课程
 	public boolean deleteCourse(int cid);//删除课程
-	public boolean joinCourse(String username, int cid);//选课
+	public boolean joinCourse(Course join,int joinCid);//选课
 	public boolean quitCourse(int cid);//退选课
 	public List<Course> searchCourse(String sName, String sTeacher, String sCollege); //查询课程
 	public List<Course> queryMyTeachCourse(int uid);//获取我开设的课程

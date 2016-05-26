@@ -1,4 +1,4 @@
-package com.cmt.service;
+package com.cmt.dao;
 
 import java.sql.Blob;
 import java.util.*;
@@ -7,7 +7,7 @@ import com.cmt.pojo.User;
 
 public interface UserDAO {
 	//登录
-	public boolean userLogin(User user);
+	public String queryPassword(User user);
 	//添加用户
 	public boolean addUser(User user);
 	//用户名是否存在

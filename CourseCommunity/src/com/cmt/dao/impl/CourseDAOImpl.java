@@ -1,4 +1,4 @@
-package com.cmt.service.impl;
+package com.cmt.dao.impl;
 
 import java.util.*;
 
@@ -6,9 +6,9 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.cmt.dao.CourseDAO;
 import com.cmt.pojo.Course;
 import com.cmt.pojo.User;
-import com.cmt.service.CourseDAO;
 import com.cmt.util.HibernateSessionFactory;
 
 public class CourseDAOImpl implements CourseDAO{
@@ -126,25 +126,11 @@ public class CourseDAOImpl implements CourseDAO{
 	}
 
 	@Override
-	public boolean joinCourse(String username, int cid) {
+	public boolean joinCourse(Course join, int joinCid) {
 		
 		Transaction transaction = null;
-		Course course =getCourse(cid);
-		Course join = new Course();
-		join.setCode(course.getCid()+"");
-		join.setTitle(course.getTitle());
-		join.setClassType(course.getClassType());
-		join.setCollege(course.getCollege());
-		join.setTeacher(course.getTeacher());
-		join.setTid(course.getTid());
-		join.setKeyword(course.getKeyword());
-		join.setBeginTime(course.getBeginTime());
-		join.setEndTime(course.getEndTime());
-		join.setRole("student");
-		join.setUser(new UserDAOImpl().getUserByUsername(username));
-		
+		Course course =getCourse(joinCid);
 		course.setStudentNumber(course.getStudentNumber()+1);
-		
 		try{
 			Session session = HibernateSessionFactory.getSession();
 			transaction = session.beginTransaction();
@@ -165,6 +151,8 @@ public class CourseDAOImpl implements CourseDAO{
 		Transaction transaction = null;
 		String hql ="";
 		int ret=0;
+		Course course =getCourse(cid);
+		course.setStudentNumber(course.getStudentNumber()-1);
 		try{
 			Session session = HibernateSessionFactory.getSession();
 			transaction=session.beginTransaction();
@@ -172,6 +160,7 @@ public class CourseDAOImpl implements CourseDAO{
 			Query query = session.createQuery(hql);
 			query.setInteger("id", cid);
 			ret = query.executeUpdate();
+			session.update(course);
 			transaction.commit();
 		}catch(Exception e){
 			e.printStackTrace();

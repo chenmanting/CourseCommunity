@@ -6,11 +6,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.Test;
 
+import com.cmt.dao.CourseDAO;
+import com.cmt.dao.impl.CourseDAOImpl;
+import com.cmt.dao.impl.UserDAOImpl;
 import com.cmt.pojo.Course;
 import com.cmt.pojo.User;
-import com.cmt.service.CourseDAO;
-import com.cmt.service.impl.CourseDAOImpl;
-import com.cmt.service.impl.UserDAOImpl;
 import com.cmt.util.HibernateSessionFactory;
 
 public class CourseTest {

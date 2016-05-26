@@ -13,11 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
+import com.cmt.dao.CourseDAO;
+import com.cmt.dao.impl.CourseDAOImpl;
+import com.cmt.dao.impl.UserDAOImpl;
 import com.cmt.pojo.Course;
 import com.cmt.pojo.User;
-import com.cmt.service.CourseDAO;
-import com.cmt.service.impl.CourseDAOImpl;
-import com.cmt.service.impl.UserDAOImpl;
+import com.cmt.service.CourseService;
+import com.cmt.service.impl.CourseServiceImpl;
 import com.opensymphony.xwork2.ModelDriven;
 
 public class CourseAction extends SuperAction implements ModelDriven<Course>{
@@ -29,7 +31,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	private static Logger logger = Logger.getLogger(CourseAction.class);
 	
 	private Course course = new Course();
-	private CourseDAO cdao = new CourseDAOImpl();
+	private CourseService cService = new CourseServiceImpl();
 	private String joinCourseId;//选课cid
 	private String delCid;//删除课程的cid
 	private String quitCid;//退出课程的cid
@@ -44,26 +46,9 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		
 		System.out.println("课程标题： "+course.getTitle());
 		User user = (User) session.getAttribute("user");
-		course.setUser(user);
-		course.setTeacher(user.getName());
-		course.setTid(user.getUid());
-		StringBuilder code= new StringBuilder(new Date().toString());
-		code.append(user.getUsername());
-		code.append(Math.random());
-		System.out.println("code: "+  code);
-		course.setCode(code.toString());
-		String result="";
-		course.setRole(MyConstant.UserType_Teacher);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		course.setBeginTime(sdf.format(new Date()));
+		
 		try {
-			if(cdao.addCourse(course)){
-				logger.info(user.getUsername()+"添加课程成功！");
-				result = "<h2>课程成功开通！</h2>";
-			}else{
-				logger.info(user.getUsername()+"课程开通失败！");
-				result = "<h2>课程开通失败！</h2>";
-			}
+			String result =   cService.addCourse(user, course);
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out;
 			out = response.getWriter();
@@ -72,7 +57,6 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		
 	}
 	
@@ -88,29 +72,9 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		System.out.println("joinCourseId" +joinCourseId);
 		String result="";
 		User user = (User) session.getAttribute("user");
-		if(user==null){
-			out.write("请先登录！");
-			return ;
-		}
-		List<Course> cc = cdao.queryMyCourses(user.getUid());
-		boolean flag = true;
-		int jid = Integer.parseInt(joinCourseId);
-		Course course = cdao.getCourse(jid);
-		for(int i=0; i<cc.size(); ++i){
-			System.out.println(cc.get(i).getCid());
-			if(cc.get(i).getCode().equals(course.getCode())){
-				flag = false;
-				result = "你已经选过该课啦~";
-				break;
-			}
-		}
-		if(flag == true){
-			if(cdao.joinCourse(user.getUsername(), jid)){
-				result = "选课成功！";
-			}else{
-				result = "选课失败！";
-			}
-		}
+		int jid =Integer.parseInt(joinCourseId);
+		
+		result =cService.joinCourse(user, jid);
 		
 		out.write(result);
 		
@@ -119,7 +83,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	public String getMyCourses(){
 		System.out.println("获取我的课程...");
 		User user = (User) session.getAttribute("user");
-		List<Course> courses = cdao.queryMyCourses(user.getUid());
+		List<Course> courses = cService.queryMyCourses(user.getUid());
 		session.setAttribute("myCourses", courses);
 		System.out.println("我有"+courses.size()+"门课");
 		System.out.println("user course: " +  user.getCourses().size());
@@ -129,7 +93,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	//获取所有的课程
 	public String getAllCourses(){
 		System.out.println("获取所有课程...");
-		List<Course> sCourses =cdao.queryAllCourses();
+		List<Course> sCourses =cService.queryAllCourses();
 		session.setAttribute("sCourses", sCourses);
 		//System.out.println("共找到" + allCourses.size()+"门课程");
 		return "gotoCourseRearch";
@@ -138,22 +102,18 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	public String getEditCourse(){
 		int cid = Integer.parseInt(request.getParameter("id"));
 		System.out.println("edit cid:" + cid);
-		Course course = cdao.getCourse(cid);
+		Course course = cService.getCourse(cid);
 		System.out.println("edit title " + course.getTitle());
 		session.setAttribute("editCourse", course);
 		return "gotoEditCourse";
 	}
-	//编辑课程
+	//更新课程
 	public void editCourse() throws IOException{
 		Course t =  (Course) session.getAttribute("editCourse");
 		System.out.println("更新课程id ： "+ t.getCid());
 		
-		String result="";
-		if(cdao.updateCourse(t.getCid(), course)){
-			result = "<h2>课程成功更新！</h2>";
-		}else{
-			result = "<h2>课程更新失败！</h2>";
-		}
+		String result=cService.updateCourse(t.getCid(), course);
+		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out;
 		out = response.getWriter();
@@ -163,9 +123,9 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	public void deleteCourse() throws IOException{
 		String result="";
 		System.out.println("delcid :" + delCid);
-		if(cdao.deleteCourse(Integer.parseInt(delCid))){
+		if(cService.deleteCourse(Integer.parseInt(delCid))){
 			User user = (User) session.getAttribute("user");
-			List<Course> courses = cdao.queryMyCourses(user.getUid());
+			List<Course> courses = cService.queryMyCourses(user.getUid());
 			session.setAttribute("myCourses", courses);
 			result = "删除成功！";
 		}else{
@@ -182,8 +142,11 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		String result ="";
 		System.out.println("quitCid " + quitCid);
 		int qid = Integer.parseInt(quitCid);
-		if(cdao.quitCourse(qid)){
+		if(cService.quitCourse(qid)){
 			result = "退课成功！";
+			User user = (User) session.getAttribute("user");
+			List<Course> courses = cService.queryMyCourses(user.getUid());
+			session.setAttribute("myCourses", courses);
 		}else{
 			result = "退课失败！";
 		}
@@ -197,7 +160,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	public void searchCourse() throws IOException{
 		System.out.println("title " +titleSreach);
 		
-		List<Course> searchCourse = cdao.searchCourse(titleSreach, teacherSreach, collegeSreach);
+		List<Course> searchCourse = cService.searchCourse(titleSreach, teacherSreach, collegeSreach);
 		session.setAttribute("sCourses", searchCourse);
 		System.out.println("搜索到" + searchCourse.size()+"个课程");
 		response.setContentType("text/html;charset=utf-8");
@@ -210,7 +173,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	public String getMyTeachCourse(){
 		System.out.println("获取我开设的课程...");
 		User u = (User) session.getAttribute("user");
-		List<Course> myTeachCourse = cdao.queryMyTeachCourse(u.getUid());
+		List<Course> myTeachCourse = cService.queryMyTeachCourse(u.getUid());
 		System.out.println("我共开设了" + myTeachCourse.size()+"门课");
 		session.setAttribute("myTeachCourse", myTeachCourse);
 		return "gotoUserListIndex";
@@ -220,7 +183,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		String result ="";
 		
 		System.out.println("ruid : " + ruid +"  rcid: " + rcid);
-		if(cdao.removeCourse(Integer.parseInt(rcid), Integer.parseInt(ruid))){
+		if(cService.removeCourse(Integer.parseInt(rcid), Integer.parseInt(ruid))){
 			result = "移除成功！";
 			getCourseUsers(Integer.parseInt(rcid));
 		}else{

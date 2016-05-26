@@ -80,9 +80,9 @@ if (!theForm) {
                         </tr>
                         <tr>
                             <td align="right">是否审核:&nbsp;</td>
-                            <td><input id="rbtnUnAudit" type="radio" name="isCheck" value="true" checked="checked" tabindex="8" /><label for="rbtnUnAudit">否</label>
+                            <td><input id="rbtnUnAudit" type="radio" name="isCheck" value="false" checked="checked" tabindex="8" /><label for="rbtnUnAudit">否</label>
                                 &nbsp; &nbsp;&nbsp;
-                                <input id="rbtnAudit" type="radio" name="isCheck" value="false" tabindex="9" /><label for="rbtnAudit">是</label></td>
+                                <input id="rbtnAudit" type="radio" name="isCheck" value="true" tabindex="9" /><label for="rbtnAudit">是</label></td>
                             <td>
                                 如选择是，则学生注册课程后，须教师审核才能有效，默认为不审核。</td>
                         </tr>
@@ -125,6 +125,7 @@ if (!theForm) {
 <script type="text/javascript">
 	$(function(){
 		var classType = "${editCourse.classType}";
+		//alert(classType);
 		if(classType != undefined && classType != "" & classType != null){
 			$("#classType").val(classType);
 		}
@@ -140,7 +141,8 @@ if (!theForm) {
 		}
 		
 		var isCheck = "${editCourse.isCheck}";
-		if(isPublic =="false"){
+		alert(isCheck)
+		if(isCheck =="true"){
 			$("#rbtnAudit").attr("checked","checked");
 		}
 		

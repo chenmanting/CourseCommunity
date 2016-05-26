@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import com.cmt.dao.impl.CourseDAOImpl;
 import com.cmt.pojo.User;
-import com.cmt.service.impl.CourseDAOImpl;
 import com.cmt.util.UserPageUtil;
 
 public class UserPageAction extends SuperAction{

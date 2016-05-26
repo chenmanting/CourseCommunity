@@ -30,7 +30,7 @@
 			<result name="gotoUserList"  type="redirect">/courses/UserList.jsp</result>
 			<!-- 配置拦截器 限制上传文件类型及大小 -->
 			<interceptor-ref name="fileUpload">
-				<param name="allowedTypes">image/bmp,image/x-png,image/gif,image/jpeg</param>
+				<param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg</param>
 				<param name="maximumSize">2M</param>
 			</interceptor-ref>
 			<interceptor-ref name="defaultStack" />  

@@ -22,11 +22,13 @@ import org.hibernate.Session;
 
 import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
 
+import com.cmt.dao.UserDAO;
+import com.cmt.dao.impl.CourseDAOImpl;
+import com.cmt.dao.impl.UserDAOImpl;
 import com.cmt.pojo.Course;
 import com.cmt.pojo.User;
-import com.cmt.service.UserDAO;
-import com.cmt.service.impl.CourseDAOImpl;
-import com.cmt.service.impl.UserDAOImpl;
+import com.cmt.service.UserService;
+import com.cmt.service.impl.UserServiceImpl;
 import com.cmt.util.HibernateSessionFactory;
 import com.cmt.util.UserPageUtil;
 import com.opensymphony.xwork2.ModelDriven;
@@ -54,7 +56,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 	private String uploadContentType;
 	private String uploadFileName;
 	
-	private UserDAO udao = new UserDAOImpl();
+	private UserService uService = new UserServiceImpl();
 	
 	//用户登录动作
 	public String login(){
@@ -78,8 +80,8 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 		}
 		user.setUsername(user.getUsername().trim());
 		user.setPassword(user.getPassword().trim());
-		if(udao.userLogin(user)){
-			user = udao.getUserByUsername(user.getUsername());
+		if(uService.userLogin(user)){
+			user = uService.getUserByUsername(user.getUsername());
 			List<Course>myCourses =new CourseDAOImpl().queryMyCourses(user.getUid());
 			session.setAttribute("myCourses", myCourses);
 			session.setAttribute("user", user);
@@ -97,7 +99,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 	//注册用户
 	public String registe() throws IOException{
 		user.setDisplay(MyConstant.HIDE_ALL_USERINFO);
-		if(udao.addUser(user)){
+		if(uService.addUser(user)){
 			//user = udao.getUserByUsername(user.getUsername());
 			session.setAttribute("user", user);
 			session.setAttribute("myCourses", null);
@@ -119,7 +121,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 			String username = user.getUsername();
 			String password = user.getPassword();
 			
-			if(udao.checkUsername(username)){
+			if(uService.checkUsername(username)){
 				System.out.println("该账户已存在");
 				result = "true";
 			}else{
@@ -146,7 +148,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 		if(!txtOldPassword.equals(user.getPassword())){
 			result = "oldPwdError";
 		}else{
-			if(udao.updatePassword(user, txtNewPassword)){
+			if(uService.updatePassword(user, txtNewPassword)){
 				result = "updatePwdSuccess";
 				user.setPassword(txtNewPassword);
 				session.setAttribute("user", user);
@@ -177,24 +179,11 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 	
 		System.out.println("display: " + check);
 		
-		StringBuilder sb = new StringBuilder(MyConstant.HIDE_ALL_USERINFO);
-		if(check != null){
-			String[] t = check.split(", ");
-			for(int i=0; i<t.length; ++i){
-				int pos = Integer.parseInt(t[i]);
-				System.out.println("pos :" +pos);
-				sb.setCharAt(pos, '1');
-			}
-			System.out.println(sb.toString());
-			user.setDisplay(sb.toString());
-		}else{
-			user.setDisplay(MyConstant.HIDE_ALL_USERINFO);
-		}
 		String username = ((User) session.getAttribute("user")).getUsername();
 		System.out.println("username : "+ username);
 		String result="";
-		if(udao.updateUserinfo(username, user)){
-			session.setAttribute("user", udao.getUserByUsername(username));
+		if(uService.updateUserinfo(username, user,check)){
+			session.setAttribute("user", uService.getUserByUsername(username));
 			result = "<h2>用户信息更改成功</h2>";
 		}else{
 			result = "<h2>用户信息更改失败</h2>";
@@ -230,7 +219,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 			is.close();
 			os.close();
 				
-			udao.updateAvatar(loginUser.getUsername(), spath+uploadFileName);
+			uService.updateAvatar(loginUser.getUsername(), spath+uploadFileName);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -284,12 +273,6 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 		os.close();
 	}
 	
-	
-	
-	public void getUserPages(){
-		
-	}
-	
 	// 注销
 	public String logout() throws IOException{
 		System.out.println("logout is invoke~");
@@ -298,7 +281,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 	}
 	//更新用户在session中的状态
 	private void updateSessionUser(String username){
-		user = udao.getUserByUsername(username);
+		user = uService.getUserByUsername(username);
 		session.setAttribute("user", user);
 	}
 	

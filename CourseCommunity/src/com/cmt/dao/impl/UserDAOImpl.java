@@ -1,4 +1,4 @@
-package com.cmt.service.impl;
+package com.cmt.dao.impl;
 
 
 import java.sql.Blob;
@@ -11,15 +11,15 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.cmt.dao.UserDAO;
 import com.cmt.pojo.User;
-import com.cmt.service.UserDAO;
 import com.cmt.util.HibernateSessionFactory;
 
 public class UserDAOImpl implements UserDAO {
 
 	// 用户登录
 	@Override
-	public boolean userLogin(User user) {
+	public String queryPassword(User user) {
 
 		String hql = "";
 		
@@ -27,28 +27,28 @@ public class UserDAOImpl implements UserDAO {
 			
 			Session session = HibernateSessionFactory.getSession();
 			
-			hql= "from User as user where user.username=:u and user.password=:p";
+			hql= "from User as user where user.username=:u";
 			
 			Query query = session.createQuery(hql);
 			query.setString("u", user.getUsername());
-			query.setString("p", user.getPassword());
 			
 			List list  = query.list();
 			
-			System.out.println("list size: " + list.size()
-					+ " username : " + user.getUsername()
-					+" password: " +user.getPassword());
+//			System.out.println("list size: " + list.size()
+//					+ " username : " + user.getUsername()
+//					+" password: " +user.getPassword());
 			
 			if(list.size()>0){
-				return true;
+				User u = (User) list.get(0);
+				return u.getPassword();
 			}else{
 				System.out.println("没有查询到用户");
-				return false;
+				return null;
 			}
 			
 		}catch(Exception ex){
 			ex.printStackTrace();
-			return false;
+			return null;
 		}finally{
 			
 			
