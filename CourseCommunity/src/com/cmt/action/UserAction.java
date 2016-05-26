@@ -27,9 +27,9 @@ import com.cmt.dao.impl.CourseDAOImpl;
 import com.cmt.dao.impl.UserDAOImpl;
 import com.cmt.pojo.Course;
 import com.cmt.pojo.User;
+import com.cmt.service.CourseService;
 import com.cmt.service.UserService;
 import com.cmt.service.impl.UserServiceImpl;
-import com.cmt.util.HibernateSessionFactory;
 import com.cmt.util.UserPageUtil;
 import com.opensymphony.xwork2.ModelDriven;
 import com.sun.prism.paint.Gradient;
@@ -56,8 +56,18 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 	private String uploadContentType;
 	private String uploadFileName;
 	
-	private UserService uService = new UserServiceImpl();
+	private UserService userService;
+	private CourseService courseService;
 	
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
+	public void setCourseService(CourseService courseService) {
+		this.courseService = courseService;
+	}
+
+
 	//用户登录动作
 	public String login(){
 		
@@ -80,9 +90,9 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 		}
 		user.setUsername(user.getUsername().trim());
 		user.setPassword(user.getPassword().trim());
-		if(uService.userLogin(user)){
-			user = uService.getUserByUsername(user.getUsername());
-			List<Course>myCourses =new CourseDAOImpl().queryMyCourses(user.getUid());
+		if(userService.userLogin(user)){
+			user = userService.getUserByUsername(user.getUsername());
+			List<Course>myCourses =courseService.queryMyCourses(user.getUid());
 			session.setAttribute("myCourses", myCourses);
 			session.setAttribute("user", user);
 			logger.info("User "+ user.getUsername()
@@ -99,14 +109,15 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 	//注册用户
 	public String registe() throws IOException{
 		user.setDisplay(MyConstant.HIDE_ALL_USERINFO);
-		if(uService.addUser(user)){
-			//user = udao.getUserByUsername(user.getUsername());
+		try{
+			int id =userService.addUser(user);
 			session.setAttribute("user", user);
 			session.setAttribute("myCourses", null);
 			logger.info("user " + user.getUsername()
 					+" registe success");
 			return "registe_success";
-		}else{
+		}catch(Exception e){
+			e.printStackTrace();
 			logger.info("user " + user.getUsername()
 					+" registe failed");
 			return "registe_failure";
@@ -121,7 +132,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 			String username = user.getUsername();
 			String password = user.getPassword();
 			
-			if(uService.checkUsername(username)){
+			if(userService.checkUsername(username)){
 				System.out.println("该账户已存在");
 				result = "true";
 			}else{
@@ -144,16 +155,19 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 	public void updatePassword(){
 		User user = (User) session.getAttribute("user");
 		String result="";
-		//System.out.println("txtOld :"+ txtOldPassword);
+		System.out.println("txtOld :"+ txtOldPassword);
 		if(!txtOldPassword.equals(user.getPassword())){
 			result = "oldPwdError";
 		}else{
-			if(uService.updatePassword(user, txtNewPassword)){
+			try{
+				User u = userService.getUser(user.getUid());
+				u.setPassword(txtNewPassword);
+				userService.updateUser(u);
 				result = "updatePwdSuccess";
 				user.setPassword(txtNewPassword);
 				session.setAttribute("user", user);
 				logger.info("user "+user.getUsername()+" update password success");
-			}else{
+			}catch(Exception e){
 				result = "updatePwdFailure";
 				logger.info("user "+user.getUsername()+" update password failed");
 			}
@@ -182,10 +196,11 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 		String username = ((User) session.getAttribute("user")).getUsername();
 		System.out.println("username : "+ username);
 		String result="";
-		if(uService.updateUserinfo(username, user,check)){
-			session.setAttribute("user", uService.getUserByUsername(username));
+		try{
+			userService.updateUserinfo(username, user,check);
+			session.setAttribute("user", userService.getUserByUsername(username));
 			result = "<h2>用户信息更改成功</h2>";
-		}else{
+		}catch(Exception e){
 			result = "<h2>用户信息更改失败</h2>";
 		}
 		
@@ -218,8 +233,10 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 			}
 			is.close();
 			os.close();
-				
-			uService.updateAvatar(loginUser.getUsername(), spath+uploadFileName);
+			String avatar = spath + uploadFileName;
+			User u = userService.getUserByUsername(loginUser.getUsername());
+			u.setAvatar(avatar);
+			userService.updateUser(u);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -281,7 +298,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
 	}
 	//更新用户在session中的状态
 	private void updateSessionUser(String username){
-		user = uService.getUserByUsername(username);
+		user = userService.getUserByUsername(username);
 		session.setAttribute("user", user);
 	}
 	

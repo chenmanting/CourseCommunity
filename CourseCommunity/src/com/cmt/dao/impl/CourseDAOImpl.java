@@ -4,21 +4,30 @@ import java.util.*;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.cmt.dao.CourseDAO;
 import com.cmt.pojo.Course;
 import com.cmt.pojo.User;
-import com.cmt.util.HibernateSessionFactory;
 
 public class CourseDAOImpl implements CourseDAO{
-
+	
+	private SessionFactory sessionFactory;
+	
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	public Session getSession() {   
+        return sessionFactory.getCurrentSession();   
+    }
+	
 	@Override
 	public boolean addCourse(Course course) {
 		
 		Transaction transaction = null;
 		try{
-			Session session = HibernateSessionFactory.getSession();
+			Session session = getSession();
 			transaction = session.beginTransaction();
 			session.save(course);
 			transaction.commit();
@@ -37,7 +46,7 @@ public class CourseDAOImpl implements CourseDAO{
 		String hql = "from Course where role=:role";
 		List<Course> courses = null;
 		try{
-			Session session = HibernateSessionFactory.getSession();
+			Session session = getSession();
 			Query query = session.createQuery(hql);
 			query.setString("role", "teacher");
 			courses = query.list();
@@ -52,7 +61,7 @@ public class CourseDAOImpl implements CourseDAO{
 	public List<Course> queryMyCourses(int uid) {
 
 		String hql="from Course as c where c.user.uid =:id";
-		Session session = HibernateSessionFactory.getSession();
+		Session session = getSession();
 		Query query = session.createQuery(hql);
 		query.setInteger("id", uid);
 		System.out.println("you  " + query.list().size());
@@ -63,7 +72,7 @@ public class CourseDAOImpl implements CourseDAO{
 	public Course getCourse(int cid) {
 		List<Course> course = null;
 		String hql ="from Course where cid =:id";
-		Session session =HibernateSessionFactory.getSession();
+		Session session =getSession();
 		Query query = session.createQuery(hql);
 		query.setInteger("id", cid);
 		course = query.list();
@@ -75,7 +84,7 @@ public class CourseDAOImpl implements CourseDAO{
 		Transaction transaction = null;
 		String hql ="";
 		try{
-			Session session = HibernateSessionFactory.getSession();
+			Session session = getSession();
 			transaction = session.beginTransaction();
 			Course c = getCourse(cid);
 			c.setTitle(course.getTitle());
@@ -107,7 +116,7 @@ public class CourseDAOImpl implements CourseDAO{
 		try{
 			Course course = getCourse(cid);
 			String code = course.getCode();
-			Session session = HibernateSessionFactory.getSession();
+			Session session = getSession();
 			transaction = session.beginTransaction();
 			hql = "delete Course as c where c.code=:code";
 			Query query = session.createQuery(hql);
@@ -132,7 +141,7 @@ public class CourseDAOImpl implements CourseDAO{
 		Course course =getCourse(joinCid);
 		course.setStudentNumber(course.getStudentNumber()+1);
 		try{
-			Session session = HibernateSessionFactory.getSession();
+			Session session = getSession();
 			transaction = session.beginTransaction();
 			session.save(join);
 			session.update(course);
@@ -154,7 +163,7 @@ public class CourseDAOImpl implements CourseDAO{
 		Course course =getCourse(cid);
 		course.setStudentNumber(course.getStudentNumber()-1);
 		try{
-			Session session = HibernateSessionFactory.getSession();
+			Session session = getSession();
 			transaction=session.beginTransaction();
 			hql = "delete Course c where c.cid=:id";
 			Query query = session.createQuery(hql);
@@ -184,7 +193,7 @@ public class CourseDAOImpl implements CourseDAO{
 	            hql.append(" and c.college like '%"+sCollege+"%'"); 
 	     }
 		 hql.append(" and c.role = 'teacher'");
-		Session session = HibernateSessionFactory.getSession();
+		Session session = getSession();
 		Query query = session.createQuery(hql.toString());
 		return query.list();
 	}
@@ -194,7 +203,7 @@ public class CourseDAOImpl implements CourseDAO{
 
 		String hql ="from Course as c where c.user.uid=:uid"
 				+ " and c.role='teacher'";
-		Session session = HibernateSessionFactory.getSession();
+		Session session = getSession();
 		Query query = session.createQuery(hql);
 		query.setInteger("uid", uid);
 		List<Course> courses = query.list();
@@ -204,7 +213,7 @@ public class CourseDAOImpl implements CourseDAO{
 	@Override
 	public List<User> queryStudents(int cid) {
 		String hql ="select c.user from Course as c where c.code=:cid";
-		Query query = HibernateSessionFactory.getSession().createQuery(hql);
+		Query query = getSession().createQuery(hql);
 		query.setString("cid", cid+"");
 		List<User> stuUids = query.list();
 		return stuUids;
@@ -216,7 +225,7 @@ public class CourseDAOImpl implements CourseDAO{
 		String hql ="";
 		int ret = 0;
 		try{
-			Session session = HibernateSessionFactory.getSession();
+			Session session = getSession();
 			transaction = session.beginTransaction();
 			hql = "delete Course as c where c.code=:code"
 					+ " and c.user.uid=:uid";

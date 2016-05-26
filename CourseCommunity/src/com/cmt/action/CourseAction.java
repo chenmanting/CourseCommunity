@@ -31,7 +31,6 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	private static Logger logger = Logger.getLogger(CourseAction.class);
 	
 	private Course course = new Course();
-	private CourseService cService = new CourseServiceImpl();
 	private String joinCourseId;//选课cid
 	private String delCid;//删除课程的cid
 	private String quitCid;//退出课程的cid
@@ -41,6 +40,12 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	private String ruid;//教师移除学生的学生uid
 	private String rcid;//教师移除学生的课程cid
 	
+	private CourseService courseService;
+	
+	public void setCourseService(CourseService courseService) {
+		this.courseService = courseService;
+	}
+
 	//开课
 	public void addCourse(){
 		
@@ -48,7 +53,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		User user = (User) session.getAttribute("user");
 		
 		try {
-			String result =   cService.addCourse(user, course);
+			String result =   courseService.addCourse(user, course);
 			response.setContentType("text/html;charset=utf-8");
 			PrintWriter out;
 			out = response.getWriter();
@@ -74,7 +79,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		User user = (User) session.getAttribute("user");
 		int jid =Integer.parseInt(joinCourseId);
 		
-		result =cService.joinCourse(user, jid);
+		result =courseService.joinCourse(user, jid);
 		
 		out.write(result);
 		
@@ -83,7 +88,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	public String getMyCourses(){
 		System.out.println("获取我的课程...");
 		User user = (User) session.getAttribute("user");
-		List<Course> courses = cService.queryMyCourses(user.getUid());
+		List<Course> courses = courseService.queryMyCourses(user.getUid());
 		session.setAttribute("myCourses", courses);
 		System.out.println("我有"+courses.size()+"门课");
 		System.out.println("user course: " +  user.getCourses().size());
@@ -93,7 +98,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	//获取所有的课程
 	public String getAllCourses(){
 		System.out.println("获取所有课程...");
-		List<Course> sCourses =cService.queryAllCourses();
+		List<Course> sCourses =courseService.queryAllCourses();
 		session.setAttribute("sCourses", sCourses);
 		//System.out.println("共找到" + allCourses.size()+"门课程");
 		return "gotoCourseRearch";
@@ -102,7 +107,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	public String getEditCourse(){
 		int cid = Integer.parseInt(request.getParameter("id"));
 		System.out.println("edit cid:" + cid);
-		Course course = cService.getCourse(cid);
+		Course course = courseService.getCourse(cid);
 		System.out.println("edit title " + course.getTitle());
 		session.setAttribute("editCourse", course);
 		return "gotoEditCourse";
@@ -112,7 +117,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		Course t =  (Course) session.getAttribute("editCourse");
 		System.out.println("更新课程id ： "+ t.getCid());
 		
-		String result=cService.updateCourse(t.getCid(), course);
+		String result=courseService.updateCourse(t.getCid(), course);
 		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out;
@@ -123,9 +128,9 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	public void deleteCourse() throws IOException{
 		String result="";
 		System.out.println("delcid :" + delCid);
-		if(cService.deleteCourse(Integer.parseInt(delCid))){
+		if(courseService.deleteCourse(Integer.parseInt(delCid))){
 			User user = (User) session.getAttribute("user");
-			List<Course> courses = cService.queryMyCourses(user.getUid());
+			List<Course> courses = courseService.queryMyCourses(user.getUid());
 			session.setAttribute("myCourses", courses);
 			result = "删除成功！";
 		}else{
@@ -142,10 +147,10 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		String result ="";
 		System.out.println("quitCid " + quitCid);
 		int qid = Integer.parseInt(quitCid);
-		if(cService.quitCourse(qid)){
+		if(courseService.quitCourse(qid)){
 			result = "退课成功！";
 			User user = (User) session.getAttribute("user");
-			List<Course> courses = cService.queryMyCourses(user.getUid());
+			List<Course> courses = courseService.queryMyCourses(user.getUid());
 			session.setAttribute("myCourses", courses);
 		}else{
 			result = "退课失败！";
@@ -160,7 +165,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	public void searchCourse() throws IOException{
 		System.out.println("title " +titleSreach);
 		
-		List<Course> searchCourse = cService.searchCourse(titleSreach, teacherSreach, collegeSreach);
+		List<Course> searchCourse = courseService.searchCourse(titleSreach, teacherSreach, collegeSreach);
 		session.setAttribute("sCourses", searchCourse);
 		System.out.println("搜索到" + searchCourse.size()+"个课程");
 		response.setContentType("text/html;charset=utf-8");
@@ -173,7 +178,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 	public String getMyTeachCourse(){
 		System.out.println("获取我开设的课程...");
 		User u = (User) session.getAttribute("user");
-		List<Course> myTeachCourse = cService.queryMyTeachCourse(u.getUid());
+		List<Course> myTeachCourse = courseService.queryMyTeachCourse(u.getUid());
 		System.out.println("我共开设了" + myTeachCourse.size()+"门课");
 		session.setAttribute("myTeachCourse", myTeachCourse);
 		return "gotoUserListIndex";
@@ -183,7 +188,7 @@ public class CourseAction extends SuperAction implements ModelDriven<Course>{
 		String result ="";
 		
 		System.out.println("ruid : " + ruid +"  rcid: " + rcid);
-		if(cService.removeCourse(Integer.parseInt(rcid), Integer.parseInt(ruid))){
+		if(courseService.removeCourse(Integer.parseInt(rcid), Integer.parseInt(ruid))){
 			result = "移除成功！";
 			getCourseUsers(Integer.parseInt(rcid));
 		}else{

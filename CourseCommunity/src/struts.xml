@@ -3,7 +3,8 @@
 <struts>
 
 	<constant name="struts.custom.i18n.resources" value="app"></constant>
-
+	<constant name="struts.objectFactory" value="spring"/>
+	
 	<package name="default" namespace="/" extends="struts-default">
 		<interceptors>  
             <interceptor name="loginedCheck" class="com.cmt.intercepter.LoginIntercepter"/>  

@@ -11,32 +11,31 @@ import com.cmt.dao.impl.CourseDAOImpl;
 import com.cmt.dao.impl.UserDAOImpl;
 import com.cmt.pojo.Course;
 import com.cmt.pojo.User;
-import com.cmt.util.HibernateSessionFactory;
 
 public class CourseTest {
 	@Test
 	public void addCourse(){
-		Session session =HibernateSessionFactory.getSession();
-		User user = new UserDAOImpl().getUserByUsername("cmt");
-		
-		Course ci = new Course();
-		ci.setTitle("title1");
-		
-		Course c2 = new Course();
-		c2.setTitle("kecheng2");
-		user.getCourses().add(c2);
-		
-		Transaction transaction = session.beginTransaction();
-		try{
-			session.update(user);
-			transaction.commit();
-		}catch(Exception e){
-			e.printStackTrace();
-			transaction.rollback();
-		}finally{
-			transaction = null;
-			
-		}
+//		Session session =HibernateSessionFactory.getSession();
+//		User user = new UserDAOImpl().getUserByUsername("cmt");
+//		
+//		Course ci = new Course();
+//		ci.setTitle("title1");
+//		
+//		Course c2 = new Course();
+//		c2.setTitle("kecheng2");
+//		user.getCourses().add(c2);
+//		
+//		Transaction transaction = session.beginTransaction();
+//		try{
+//			session.update(user);
+//			transaction.commit();
+//		}catch(Exception e){
+//			e.printStackTrace();
+//			transaction.rollback();
+//		}finally{
+//			transaction = null;
+//			
+//		}
 		
 	}
 	@Test

@@ -44,14 +44,14 @@ public class TestUserDAOImpl {
 	
 	@Test
 	public void testCheckUsername(){
-		String username = "chinn";
-		UserDAOImpl udao =  new UserDAOImpl();
-		if(udao.checkUsername(username)){
-			System.out.println("username is existed");
-		}else{
-			System.out.println("username is not existed");
-			
-		}
+//		String username = "chinn";
+//		UserDAOImpl udao =  new UserDAOImpl();
+//		if(udao.checkUsername(username)){
+//			System.out.println("username is existed");
+//		}else{
+//			System.out.println("username is not existed");
+//			
+//		}
 		
 	}
 	
@@ -92,12 +92,12 @@ public class TestUserDAOImpl {
 	// 测试更新密码
 	@Test
 	public void testUpdatePassword(){
-		User user1 =  new User();
-		String username = "chinn";
-		user1.setUsername(username);
-		UserDAO udao = new UserDAOImpl();
-		User user = udao.getUserByUsername(username);
-		udao.updatePassword(user1, "zzz");
+//		User user1 =  new User();
+//		String username = "chinn";
+//		user1.setUsername(username);
+//		UserDAO udao = new UserDAOImpl();
+//		User user = udao.getUserByUsername(username);
+//		udao.updatePassword(user1, "zzz");
 	}
 	
 	@Test
