@@ -1,0 +1,98 @@
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xsi:schemaLocation="   
+            http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans.xsd 
+            http://www.springframework.org/schema/aop 
+            http://www.springframework.org/schema/aop/spring-aop.xsd 
+            http://www.springframework.org/schema/tx 
+            http://www.springframework.org/schema/tx/spring-tx.xsd 
+            http://www.springframework.org/schema/context 
+            http://www.springframework.org/schema/context/spring-context.xsd"> 
+
+	<!-- DataSource -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/coursecommunity" />
+		<property name="user" value="root" />
+		<property name="password" value="root" />
+	</bean>
+
+	<!-- SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		p:dataSource-ref="dataSource"  
+        p:configLocation="classpath:hibernate.cfg.xml" />
+
+	<!-- TransactionManager -->
+	<bean id="transactionManager"
+        class="org.springframework.orm.hibernate4.HibernateTransactionManager"
+        p:sessionFactory-ref="sessionFactory" />
+
+	<!-- Spring Advice -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"></tx:method>
+			<tx:method name="*"></tx:method>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- Spring Aop Config -->
+	<aop:config>
+	    <!-- 定义一个事务切入点，拦截此包中所有实现类的所有方法，即只对逻辑层实施事务 -->
+		<aop:pointcut id="pointcut"
+			expression="execution(* com.cmt.service.impl.*Impl.*(..))" />
+		<!-- 引用txAdvice事务通知 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" />
+	</aop:config>
+
+	<!-- DAO -->
+	<bean id="userDao" class="com.cmt.dao.impl.UserDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="courseDao" class="com.cmt.dao.impl.CourseDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<!-- Service -->
+    <bean id="userService" class="com.cmt.service.impl.UserServiceImpl">
+        <property name="userDao">
+            <ref bean="userDao" />
+        </property>
+    </bean>
+    <bean id="courseService" class="com.cmt.service.impl.CourseServiceImpl">
+        <property name="courseDao">
+            <ref bean="courseDao" />
+        </property>
+    </bean>
+
+	<!-- Action -->
+	<bean id="userAction" class="com.cmt.action.UserAction" scope="prototype">
+		<property name="userService">
+            <ref bean="userService" />
+        </property>
+        <property name="courseService">
+            <ref bean="courseService" />
+        </property>
+	</bean>
+	<bean id="courseAction" class="com.cmt.action.CourseAction" scope="prototype">
+		<property name="courseService">
+            <ref bean="courseService" />
+        </property>
+	</bean>
+	<bean id="userPageAction" class="com.cmt.action.UserPageAction" scope="prototype">
+		<property name="courseService">
+            <ref bean="courseService" />
+        </property>
+	</bean>
+
+</beans>
